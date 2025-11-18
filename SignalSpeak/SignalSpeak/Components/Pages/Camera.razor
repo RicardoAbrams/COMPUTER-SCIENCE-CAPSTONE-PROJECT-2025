@@ -1,0 +1,78 @@
+﻿@page "/camera"
+@rendermode InteractiveServer
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
+
+<div class="ss-layout">
+
+    <!-- Panel de chat -->
+    <section class="ss-card ss-chat">
+        <header class="ss-card-header">
+            <h2>SignSpeak · Chat Translation</h2>
+            <span class="ss-subtitle">Traducción de lenguaje de señas a texto</span>
+        </header>
+
+        <div class="ss-chat-window">
+            <div class="ss-chat-bubble system">
+                SYSTEM: You signed: "Hello, how are you?"
+            </div>
+
+            <div class="ss-chat-bubble user">
+                USER: Going to the store.
+            </div>
+        </div>
+
+        <div class="ss-chat-input-row">
+            <input class="ss-input" placeholder="Texto traducido..." disabled />
+            <button class="ss-btn ss-btn-primary" disabled>Translate</button>
+        </div>
+    </section>
+
+    <!-- Panel de cámara -->
+    <section class="ss-card ss-camera">
+        <header class="ss-card-header ss-card-header-camera">
+            <div class="ss-header-icon">📷</div>
+            <div>
+                <h2>Live Camera / Sign Detection</h2>
+                <span class="ss-subtitle">Captura y detección de señas</span>
+            </div>
+        </header>
+
+        <div class="ss-camera-frame">
+            <div class="ss-detected-tag">@(_status ?? "Waiting for camera...")</div>
+
+            <video @ref="_videoRef"
+                   class="ss-video"
+                   autoplay
+                   playsinline
+                   muted>
+            </video>
+        </div>
+    </section>
+
+</div>
+
+<!-- Botones -->
+<div class="ss-actions-bar">
+    <button class="ss-btn ss-btn-primary"
+            @onclick="StartCamera"
+            disabled="@_starting">
+        @(_starting ? "Activando cámara..." : "Activate Camera")
+    </button>
+
+    <button class="ss-btn ss-btn-outline"
+            @onclick="StopCamera"
+            disabled="@(!_cameraOn)">
+        Deactivate Camera
+    </button>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(_photoDataUrl))
+{
+    <div class="ss-preview-row">
+        <h4>Última foto capturada</h4>
+        <img class="ss-preview-img" src="@_photoDataUrl" alt="Captura" />
+    </div>
+}
+
+
