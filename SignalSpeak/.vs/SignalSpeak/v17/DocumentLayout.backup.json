@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\vipap\\documents\\github\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\wwwroot\\icons\\translate.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\wwwroot\\icons\\translate.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\vipap\\documents\\github\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\wwwroot\\favicon.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\wwwroot\\favicon.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\vipap\\documents\\github\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\camera.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\camera.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
@@ -30,11 +38,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "translate.png",
+              "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\icons\\translate.png",
+              "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\icons\\translate.png",
+              "ToolTip": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\icons\\translate.png",
+              "RelativeToolTip": "SignalSpeak\\wwwroot\\icons\\translate.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-11-18T01:25:56.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "favicon.png",
+              "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\favicon.png",
+              "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\favicon.png",
+              "ToolTip": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\favicon.png",
+              "RelativeToolTip": "SignalSpeak\\wwwroot\\favicon.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-11-18T01:25:44.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Camera.razor.css",
               "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor.css",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor.css",
@@ -42,12 +74,11 @@
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Camera.razor.css",
               "ViewState": "AgIAALEAAAAAAAAAAAAkwMkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-18T01:14:35.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:14:35.653Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Camera.razor.cs",
               "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor.cs",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor.cs",
@@ -55,8 +86,7 @@
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Camera.razor.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAAYwGYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T01:13:51.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:13:51.617Z"
             },
             {
               "$type": "Document",
@@ -64,16 +94,16 @@
               "Title": "NavMenu.razor",
               "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABkAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor*",
+              "RelativeToolTip": "SignalSpeak\\Components\\Layout\\NavMenu.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-18T01:11:57.228Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Camera.razor",
               "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor",
@@ -81,12 +111,11 @@
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Camera.razor",
               "ViewState": "AgIAAEYAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T01:11:20.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:11:20.605Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Camera.js",
               "DocumentMoniker": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\js\\Camera.js",
               "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\js\\Camera.js",
@@ -94,8 +123,7 @@
               "RelativeToolTip": "SignalSpeak\\wwwroot\\js\\Camera.js",
               "ViewState": "AgIAAEsAAAAAAAAAAAAowGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-18T01:09:08.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:09:08.13Z"
             }
           ]
         }
