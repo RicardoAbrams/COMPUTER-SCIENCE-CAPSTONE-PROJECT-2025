@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {}
+    "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {
+    "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
+        "projectUniqueName": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
         "projectName": "SignalSpeak",
-        "projectPath": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
-        "packagesPath": "C:\\Users\\vipap\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vipap\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\obj\\",
+        "projectPath": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
+        "packagesPath": "C:\\Users\\Erickaa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vipap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Erickaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

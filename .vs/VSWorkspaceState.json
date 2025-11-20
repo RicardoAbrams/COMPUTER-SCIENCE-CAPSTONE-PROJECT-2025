@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SignalSpeak",
+    "\\SignalSpeak\\SignalSpeak",
+    "\\SignalSpeak\\SignalSpeak\\Components",
+    "\\SignalSpeak\\SignalSpeak\\Components\\Layout"
+  ],
+  "SelectedNode": "\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
+  "PreviewInSolutionExplorer": false
+}
