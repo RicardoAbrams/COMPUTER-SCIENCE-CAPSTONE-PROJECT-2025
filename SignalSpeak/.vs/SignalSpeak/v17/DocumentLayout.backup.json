@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\desktop\\capston2025\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\aboutus.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\aboutus.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\desktop\\capston2025\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\camera.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\camera.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\desktop\\capston2025\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\desktop\\capston2025\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -38,11 +46,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Weather.razor",
+              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Weather.razor",
+              "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Weather.razor",
+              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Weather.razor",
+              "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Weather.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-21T00:10:54.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AboutUs.razor",
+              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\AboutUs.razor",
+              "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\AboutUs.razor",
+              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\AboutUs.razor",
+              "RelativeToolTip": "SignalSpeak\\Components\\Pages\\AboutUs.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-21T00:00:45.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "translate.png",
               "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\icons\\translate.png",
               "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\icons\\translate.png",
@@ -53,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "favicon.png",
               "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\favicon.png",
               "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\favicon.png",
@@ -64,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Camera.razor.css",
               "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor.css",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor.css",
@@ -76,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Camera.razor.cs",
               "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor.cs",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor.cs",
@@ -84,38 +117,35 @@
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Camera.razor.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAAYwGYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T01:13:51.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:13:51.617Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T01:11:57.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Camera.razor",
               "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor",
               "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Camera.razor",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T01:11:20.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:11:20.605Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-18T01:11:57.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Camera.js",
               "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\Desktop\\capston2025\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\js\\Camera.js",
               "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\js\\Camera.js",
