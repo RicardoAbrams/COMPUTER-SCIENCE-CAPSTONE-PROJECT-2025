@@ -1,8 +1,22 @@
-﻿using SignalSpeak.Components;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using SignalSpeak.Components;
+using SignalSpeak.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register services
+// Register DbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register Identity
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>();
+
+// Blazor services
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -10,7 +24,6 @@ builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
-// Configure middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -19,22 +32,16 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+// ✅ Add Anti-Forgery middleware here
 app.UseAntiforgery();
 
-// Map Razor components
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapRazorComponents<App>()
-        .AddInteractiveServerRenderMode();
-});
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.MapFallbackToFile("index.html"); // 👈 This is the fix
-
-
-// Run the app
 app.Run();
