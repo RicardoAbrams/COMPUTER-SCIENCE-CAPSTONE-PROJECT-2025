@@ -1,0 +1,18 @@
+/* Forces all images to be perfect circles and the same size */
+.team-img[b-obu22wlxhw] {
+    width: 130px;
+    height: 150px;
+    object-fit: cover; /* This prevents the photo from stretching */
+    border: 3px solid #6F5C96; /* The purple accent from your sidebar */
+    padding: 3px;
+}
+
+/* Adds a hover effect to the card */
+.team-card[b-obu22wlxhw] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .team-card:hover[b-obu22wlxhw] {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }

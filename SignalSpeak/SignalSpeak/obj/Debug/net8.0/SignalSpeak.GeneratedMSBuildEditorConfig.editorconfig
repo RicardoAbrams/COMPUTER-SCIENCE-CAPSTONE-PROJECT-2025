@@ -24,10 +24,6 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erickaa/OneDrive/Desktop/capston2025/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/AboutUs.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dFVzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Erickaa/OneDrive/Desktop/capston2025/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -59,6 +55,10 @@ build_metadata.AdditionalFiles.CssScope = b-chqe5bzmo4
 [C:/Users/Erickaa/OneDrive/Desktop/capston2025/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-doc2zb67ia
+
+[C:/Users/Erickaa/OneDrive/Desktop/capston2025/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/AboutUs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dFVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-obu22wlxhw
 
 [C:/Users/Erickaa/OneDrive/Desktop/capston2025/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Camera.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDYW1lcmEucmF6b3I=

@@ -3,9 +3,9 @@ wwwroot\bootstrap\bootstrap.min.css
 wwwroot\bootstrap\bootstrap.min.css.map
 wwwroot\favicon.png
 wwwroot\icons\translate.png
-wwwroot\image\denis.png
-wwwroot\image\ericka.png
+wwwroot\js\Camera.js
 wwwroot\image\ricardo.png
 wwwroot\image\silvya.png
 wwwroot\image\victor.png
-wwwroot\js\Camera.js
+wwwroot\image\ericka.png
+wwwroot\image\denis.png
