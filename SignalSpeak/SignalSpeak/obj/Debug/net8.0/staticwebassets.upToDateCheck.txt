@@ -1,7 +1,0 @@
-wwwroot\app.css
-wwwroot\bootstrap\bootstrap.min.css
-wwwroot\bootstrap\bootstrap.min.css.map
-wwwroot\favicon.png
-wwwroot\icons\translate.png
-wwwroot\index.html
-wwwroot\js\Camera.js

@@ -1,29 +1,59 @@
-# Visual Studio temporary files, build results, and user-specific files
+# =========================
+# Python
+# =========================
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# User-specific files
-*.rsuser
+# Python backend
+SignalSpeak/SignalSpeak/pythonBackend/venv/
+SignalSpeak/SignalSpeak/pythonBackend/__pycache__/
+
+# =========================
+# Visual Studio / .NET
+# =========================
+.vs/
+.vscode/
+bin/
+obj/
 *.suo
 *.user
+*.rsuser
 *.userosscache
 *.sln.docstates
 
-# Visual Studio cache and temp folders
-.vs/
-.vscode/
-
-# Build results
-bin/
-obj/
-
-# Rider project files
-.idea/
-
-# NPM / Node modules (if any)
-node_modules/
-
-# Logs
-*.log
-
-# OS generated files
-*.DS_Store
+# =========================
+# OS
+# =========================
+.DS_Store
 Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+# Visual Studio cache databases
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.VC.db
+*.CodeChunks.db
+
+# Extra VS artifacts
+*.cache
+*.cache.json
+*.tlog
+*.ilk
+*.pdb
+*.exe
+*.dll
+
+# MSBuild/VS folders (por si salen con ruta completa)
+**/bin/
+**/obj/
+**/.vs/
+

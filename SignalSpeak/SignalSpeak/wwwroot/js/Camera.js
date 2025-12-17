@@ -1,100 +1,120 @@
-﻿// wwwroot/js/camera.js
+﻿let currentStream = null;
+let isRunning = false;
 
-let currentStream = null;
-
-// Opcional: asegurar que el elemento video es válido
 function ensureVideoElement(videoElement) {
-    if (!videoElement) {
-        throw new Error("No se recibió referencia al elemento <video>.");
-    }
-
+    if (!videoElement) throw new Error("No se recibió referencia al <video>.");
     videoElement.autoplay = true;
     videoElement.playsInline = true;
     videoElement.muted = true;
-
     return videoElement;
 }
 
-export async function startCamera(videoElementRef) {
-    console.log("startCamera llamado con:", videoElementRef);
-
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        throw new Error("Este navegador no soporta getUserMedia.");
-    }
-
-    const videoElement = ensureVideoElement(videoElementRef);
-
-    // Si había una cámara activa, detenla
-    if (currentStream) {
-        currentStream.getTracks().forEach(t => t.stop());
-        currentStream = null;
-    }
-
-    try {
-        let stream;
-        // Intento con constraints “bonitos”
-        try {
-            stream = await navigator.mediaDevices.getUserMedia({
-                video: {
-                    width: { ideal: 1280 },
-                    height: { ideal: 720 },
-                    facingMode: "user"
-                },
-                audio: false
-            });
-        } catch (err) {
-            console.warn("Fallo con constraints detallados, usando fallback sencillo:", err);
-            stream = await navigator.mediaDevices.getUserMedia({
-                video: true,
-                audio: false
-            });
-        }
-
-        console.log("Stream obtenido:", stream);
-
-        currentStream = stream;
-        videoElement.srcObject = stream;
-        await videoElement.play();
-
-        console.log("Video reproduciéndose");
-        return true;
-    } catch (err) {
-        console.error("Error en getUserMedia:", err);
-        throw err;
-    }
-}
-
-export function stopCamera(videoElementRef) {
-    console.log("stopCamera llamado con:", videoElementRef);
-    const videoElement = videoElementRef ?? null;
-
-    if (currentStream) {
-        currentStream.getTracks().forEach(t => t.stop());
-        currentStream = null;
-    }
-
-    if (videoElement) {
-        videoElement.srcObject = null;
-    }
-}
-
-export function capturePhoto(videoElementRef) {
-    console.log("capturePhoto llamado con:", videoElementRef);
-    const videoElement = ensureVideoElement(videoElementRef);
-
-    if (!videoElement.videoWidth || !videoElement.videoHeight) {
-        throw new Error("Video no listo para captura.");
-    }
-
+async function captureFrameToBlob(videoEl, quality = 0.85) {
     const canvas = document.createElement("canvas");
-    canvas.width = videoElement.videoWidth;
-    canvas.height = videoElement.videoHeight;
+    canvas.width = videoEl.videoWidth || 1280;
+    canvas.height = videoEl.videoHeight || 720;
 
     const ctx = canvas.getContext("2d");
-    ctx.drawImage(videoElement, 0, 0);
+    ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
 
-    const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
-    console.log("Foto capturada, longitud dataURL:", dataUrl.length);
+    const blob = await new Promise((resolve) =>
+        canvas.toBlob(resolve, "image/jpeg", quality)
+    );
 
-    return dataUrl;
+    return blob;
+}
+
+export async function startCamera(videoElement, dotNetRef) {
+    console.log("startCamera called");
+
+    const videoEl = ensureVideoElement(videoElement);
+
+    // Detener si ya había stream
+    if (currentStream) {
+        currentStream.getTracks().forEach((t) => t.stop());
+        currentStream = null;
+    }
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+        throw new Error("Este navegador no soporta getUserMedia().");
+    }
+
+    currentStream = await navigator.mediaDevices.getUserMedia({
+        video: { width: 1280, height: 720 },
+        audio: false,
+    });
+
+    videoEl.srcObject = currentStream;
+    await videoEl.play();
+
+    isRunning = true;
+
+    if (dotNetRef) {
+        await dotNetRef.invokeMethodAsync("UpdateStatus", "Camera active - sending frames to Python backend...");
+    }
+
+    // Loop de envío de frames
+    const loop = async () => {
+        if (!isRunning) return;
+
+        try {
+            const blob = await captureFrameToBlob(videoEl, 0.85);
+
+            const formData = new FormData();
+            formData.append("file", blob, "frame.jpg");
+
+            const response = await fetch("http://localhost:8000/analyze-frame", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!response.ok) {
+                console.error("Backend error:", response.status, response.statusText);
+                if (dotNetRef) {
+                    await dotNetRef.invokeMethodAsync("UpdateStatus", `Backend error: ${response.status}`);
+                }
+            } else {
+                const data = await response.json();
+                console.log("Backend response:", data);
+
+                if (dotNetRef) {
+                    // recognized_sign puede venir null si no detecta mano
+                    await dotNetRef.invokeMethodAsync("UpdateRecognizedText", data.recognized_sign);
+                }
+            }
+        } catch (err) {
+            console.error("Error sending frame:", err);
+            if (dotNetRef) {
+                await dotNetRef.invokeMethodAsync("UpdateStatus", "Error sending frame (check backend/CORS).");
+            }
+        }
+
+        // Ajusta el rate (ms): 150–250 es ok para demo
+        setTimeout(loop, 200);
+    };
+
+    loop();
+}
+
+export async function stopCamera(videoElement, dotNetRef) {
+    console.log("stopCamera called");
+    isRunning = false;
+
+    try {
+        if (currentStream) {
+            currentStream.getTracks().forEach((t) => t.stop());
+            currentStream = null;
+        }
+
+        if (videoElement) {
+            videoElement.srcObject = null;
+        }
+
+        if (dotNetRef) {
+            await dotNetRef.invokeMethodAsync("UpdateStatus", "Camera stopped.");
+            await dotNetRef.invokeMethodAsync("UpdateRecognizedText", null);
+        }
+    } catch (err) {
+        console.error("stopCamera error:", err);
+    }
 }
