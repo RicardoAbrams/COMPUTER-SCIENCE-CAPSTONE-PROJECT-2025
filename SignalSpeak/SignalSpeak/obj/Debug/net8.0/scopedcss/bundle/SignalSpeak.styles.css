@@ -1,4 +1,4 @@
-/* /Components/Layout/MainLayout.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/MainLayout.razor.rz.scp.css */
 .page[b-chqe5bzmo4] {
     position: relative;
     display: flex;
@@ -95,7 +95,7 @@ main[b-chqe5bzmo4] {
         right: 0.75rem;
         top: 0.5rem;
     }
-/* /Components/Layout/NavMenu.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-doc2zb67ia] {
     appearance: none;
     cursor: pointer;
@@ -201,7 +201,7 @@ main[b-chqe5bzmo4] {
         overflow-y: auto;
     }
 }
-/* /Components/Pages/Camera.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/Camera.razor.rz.scp.css */
 .ss-layout[b-d2yg658lnb] {
     display: flex;
     gap: 2rem;
