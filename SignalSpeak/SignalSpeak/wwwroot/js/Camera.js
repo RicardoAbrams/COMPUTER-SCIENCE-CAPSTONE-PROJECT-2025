@@ -1,6 +1,13 @@
 ﻿let currentStream = null;
 let isRunning = false;
 
+let currentMode = "analyze"; // "analyze" | "collect"
+let currentLabel = "A";      // "A".."Z"
+let dotNetRefGlobal = null;
+let videoElGlobal = null;
+
+let lastRecognized = null;   // para no spamear UI
+
 function ensureVideoElement(videoElement) {
     if (!videoElement) throw new Error("No se recibió referencia al <video>.");
     videoElement.autoplay = true;
@@ -24,10 +31,67 @@ async function captureFrameToBlob(videoEl, quality = 0.85) {
     return blob;
 }
 
+function getEndpointUrl() {
+    if (currentMode === "collect") {
+        return `http://localhost:8000/collect-template?label=${encodeURIComponent(currentLabel)}`;
+    }
+    return "http://localhost:8000/analyze-frame";
+}
+
+// ✅ llamado desde Blazor
+export function setMode(mode) {
+    if (mode !== "analyze" && mode !== "collect") return;
+    currentMode = mode;
+    console.log("Mode set:", currentMode);
+
+    // reset spam control
+    lastRecognized = null;
+}
+
+// ✅ llamado desde Blazor
+export function setLabel(label) {
+    if (!label || typeof label !== "string") return;
+    const up = label.trim().toUpperCase();
+    if (up.length !== 1) return;
+    if (up < "A" || up > "Z") return;
+
+    currentLabel = up;
+    console.log("Label set:", currentLabel);
+}
+
+// ✅ llamado desde Blazor: graba por X ms en modo collect
+export async function recordForMs(ms = 2000) {
+    if (!isRunning || !videoElGlobal) throw new Error("Camera is not running.");
+    if (!dotNetRefGlobal) throw new Error("dotNetRef not set.");
+
+    const prevMode = currentMode;
+    currentMode = "collect";
+    lastRecognized = null;
+
+    await dotNetRefGlobal.invokeMethodAsync(
+        "UpdateStatus",
+        `Recording label ${currentLabel} for ${ms} ms...`
+    );
+
+    await new Promise((resolve) => setTimeout(resolve, ms));
+
+    currentMode = prevMode;
+
+    await dotNetRefGlobal.invokeMethodAsync(
+        "UpdateStatus",
+        `Recording done for ${currentLabel}.`
+    );
+}
+
+// ✅ llamado desde Blazor (tu función actual)
 export async function startCamera(videoElement, dotNetRef) {
     console.log("startCamera called");
 
     const videoEl = ensureVideoElement(videoElement);
+
+    // guardar referencias para recordForMs()
+    dotNetRefGlobal = dotNetRef;
+    videoElGlobal = videoEl;
 
     // Detener si ya había stream
     if (currentStream) {
@@ -50,7 +114,10 @@ export async function startCamera(videoElement, dotNetRef) {
     isRunning = true;
 
     if (dotNetRef) {
-        await dotNetRef.invokeMethodAsync("UpdateStatus", "Camera active - sending frames to Python backend...");
+        await dotNetRef.invokeMethodAsync(
+            "UpdateStatus",
+            "Camera active - sending frames to Python backend..."
+        );
     }
 
     // Loop de envío de frames
@@ -63,7 +130,9 @@ export async function startCamera(videoElement, dotNetRef) {
             const formData = new FormData();
             formData.append("file", blob, "frame.jpg");
 
-            const response = await fetch("http://localhost:8000/analyze-frame", {
+            const url = getEndpointUrl();
+
+            const response = await fetch(url, {
                 method: "POST",
                 body: formData,
             });
@@ -71,31 +140,51 @@ export async function startCamera(videoElement, dotNetRef) {
             if (!response.ok) {
                 console.error("Backend error:", response.status, response.statusText);
                 if (dotNetRef) {
-                    await dotNetRef.invokeMethodAsync("UpdateStatus", `Backend error: ${response.status}`);
+                    await dotNetRef.invokeMethodAsync(
+                        "UpdateStatus",
+                        `Backend error: ${response.status}`
+                    );
                 }
             } else {
                 const data = await response.json();
-                console.log("Backend response:", data);
 
                 if (dotNetRef) {
-                    // recognized_sign puede venir null si no detecta mano
-                    await dotNetRef.invokeMethodAsync("UpdateRecognizedText", data.recognized_sign);
+                    // En modo collect: el backend devuelve {saved:true/false,...}
+                    if (currentMode === "collect") {
+                        // opcional: mostrar saved si quieres
+                        // (no spamear demasiado)
+                    } else {
+                        // modo analyze: recognized_sign puede ser null
+                        const sign = data.recognized_sign ?? null;
+
+                        // no spamear UI si no cambia
+                        if (sign !== lastRecognized) {
+                            lastRecognized = sign;
+                            await dotNetRef.invokeMethodAsync(
+                                "UpdateRecognizedText",
+                                sign
+                            );
+                        }
+                    }
                 }
             }
         } catch (err) {
             console.error("Error sending frame:", err);
             if (dotNetRef) {
-                await dotNetRef.invokeMethodAsync("UpdateStatus", "Error sending frame (check backend/CORS).");
+                await dotNetRef.invokeMethodAsync(
+                    "UpdateStatus",
+                    "Error sending frame (check backend/CORS)."
+                );
             }
         }
 
-        // Ajusta el rate (ms): 150–250 es ok para demo
         setTimeout(loop, 200);
     };
 
     loop();
 }
 
+// ✅ llamado desde Blazor (tu función actual)
 export async function stopCamera(videoElement, dotNetRef) {
     console.log("stopCamera called");
     isRunning = false;
@@ -109,6 +198,11 @@ export async function stopCamera(videoElement, dotNetRef) {
         if (videoElement) {
             videoElement.srcObject = null;
         }
+
+        // reset globals
+        dotNetRefGlobal = null;
+        videoElGlobal = null;
+        lastRecognized = null;
 
         if (dotNetRef) {
             await dotNetRef.invokeMethodAsync("UpdateStatus", "Camera stopped.");
