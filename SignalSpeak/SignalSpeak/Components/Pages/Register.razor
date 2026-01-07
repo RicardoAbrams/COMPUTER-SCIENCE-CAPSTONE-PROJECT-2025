@@ -1,57 +1,125 @@
-﻿@page "/register"
-@using Microsoft.AspNetCore.Components.Forms
+﻿@page "/Account/Register"
+@rendermode InteractiveServer
+
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Components.Forms
 
-<h3>Sign Up</h3>
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+@inject ILogger<Register> Logger
+@inject NavigationManager NavigationManager
 
-<EditForm Model="@registerModel" OnValidSubmit="HandleRegister">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+<PageTitle>Register</PageTitle>
 
-    <div class="form-group">
-        <label>Email</label>
-        <InputText @bind-Value="registerModel.Email" class="form-control" />
-        <ValidationMessage For="@(() => registerModel.Email)" />
+<h1>Register</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+
+            <!-- TEST BUTTON -->
+            <button class="btn btn-danger mb-3" @onclick="TestClick">
+                TEST CLICK
+            </button>
+
+            <EditForm Model="Input"
+                      OnValidSubmit="RegisterUser"
+                      method="post"
+                      FormName="register">
+
+                <AntiforgeryToken />
+
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger" />
+
+                <h2>Create a new account.</h2>
+                <hr />
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.Email"
+                               class="form-control"
+                               placeholder="name@example.com" />
+                    <label>Email</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText type="password"
+                               @bind-Value="Input.Password"
+                               class="form-control"
+                               placeholder="password" />
+                    <label>Password</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText type="password"
+                               @bind-Value="Input.ConfirmPassword"
+                               class="form-control"
+                               placeholder="confirm password" />
+                    <label>Confirm Password</label>
+                </div>
+
+                <button type="submit" class="w-100 btn btn-lg btn-primary">
+                    Register
+                </button>
+
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <div class="text-danger mt-2">@errorMessage</div>
+                }
+
+            </EditForm>
+
+        </section>
     </div>
-
-    <div class="form-group">
-        <label>Password</label>
-        <InputText @bind-Value="registerModel.Password" type="password" class="form-control" />
-        <ValidationMessage For="@(() => registerModel.Password)" />
-    </div>
-
-    <div class="form-group">
-        <label>Confirm Password</label>
-        <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="form-control" />
-        <ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-</EditForm>
-
-<p>DEBUG: @registerModel.Email | @registerModel.Password | @registerModel.ConfirmPassword</p>
+</div>
 
 @code {
-    private RegisterModel registerModel = new();
+    private string? errorMessage;
 
-    private void HandleRegister()
+    private InputModel Input { get; set; } = new();
+
+    private void TestClick()
     {
-        Console.WriteLine("FORM SUBMITTED!");
-        Console.WriteLine("Email: " + registerModel.Email);
+        Console.WriteLine("CLICK WORKS");
     }
 
-    public class RegisterModel
+    private async Task RegisterUser()
     {
-        [Required(ErrorMessage = "The Email field is required.")]
-        [EmailAddress(ErrorMessage = "Please enter a valid email.")]
-        public string Email { get; set; } = string.Empty;
+        Logger.LogInformation("RegisterUser fired");
 
-        [Required(ErrorMessage = "The Password field is required.")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters.")]
-        public string Password { get; set; } = string.Empty;
+        var user = new IdentityUser
+        {
+            UserName = Input.Email,
+            Email = Input.Email
+        };
 
-        [Required(ErrorMessage = "The Confirm Password field is required.")]
+        var result = await UserManager.CreateAsync(user, Input.Password);
+
+        if (!result.Succeeded)
+        {
+            errorMessage = string.Join(", ", result.Errors.Select(e => e.Description));
+            return;
+        }
+
+        Logger.LogInformation("User created successfully");
+
+        await SignInManager.SignInAsync(user, isPersistent: false);
+
+        NavigationManager.NavigateTo("/", forceLoad: true);
+    }
+
+    private sealed class InputModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required]
+        [StringLength(100, MinimumLength = 6)]
+        public string Password { get; set; } = "";
+
         [Compare(nameof(Password), ErrorMessage = "Passwords do not match.")]
-        public string ConfirmPassword { get; set; } = string.Empty;
+        public string ConfirmPassword { get; set; } = "";
     }
 }

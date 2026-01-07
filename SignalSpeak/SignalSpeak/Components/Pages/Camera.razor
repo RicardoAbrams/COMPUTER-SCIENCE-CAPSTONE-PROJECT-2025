@@ -1,7 +1,6 @@
 ﻿@page "/camera"
 @rendermode InteractiveServer
 @using Microsoft.JSInterop
-@implements IAsyncDisposable
 @inject IJSRuntime JS
 
 <div class="ss-layout">
@@ -15,12 +14,16 @@
 
         <div class="ss-chat-window">
             <div class="ss-chat-bubble system">
-                SYSTEM: @(_recognizedText is null ? "Waiting for sign detection..." : $"You signed: \"{_recognizedText}\"")
+                SYSTEM: You signed: "Hello, how are you?"
+            </div>
+
+            <div class="ss-chat-bubble user">
+                USER: Going to the store.
             </div>
         </div>
 
         <div class="ss-chat-input-row">
-            <input class="ss-input" placeholder="Texto traducido..." value="@(_recognizedText ?? "")" disabled />
+            <input class="ss-input" placeholder="Texto traducido..." disabled />
             <button class="ss-btn ss-btn-primary" disabled>Translate</button>
         </div>
     </section>
@@ -36,7 +39,7 @@
         </header>
 
         <div class="ss-camera-frame">
-            <div class="ss-detected-tag">@_status</div>
+            <div class="ss-detected-tag">@(_status ?? "Waiting for camera...")</div>
 
             <video @ref="_videoRef"
                    class="ss-video"
@@ -49,111 +52,28 @@
 
 </div>
 
+<!-- Botones -->
 <div class="ss-actions-bar">
-    <button class="ss-btn ss-btn-primary" @onclick="StartCamera" disabled="@_starting">
+    <button class="ss-btn ss-btn-primary"
+            @onclick="StartCamera"
+            disabled="@_starting">
         @(_starting ? "Activando cámara..." : "Activate Camera")
     </button>
 
-    <button class="ss-btn ss-btn-outline" @onclick="StopCamera" disabled="@(!_cameraOn)">
+    <button class="ss-btn ss-btn-outline"
+            @onclick="StopCamera"
+            disabled="@(!_cameraOn)">
         Deactivate Camera
     </button>
 </div>
 
-@code {
-    private ElementReference _videoRef;
-    private IJSObjectReference? _cameraModule;
-    private DotNetObjectReference<CameraPage>? _dotNetRef;
+@if (!string.IsNullOrWhiteSpace(_photoDataUrl))
+{
+    <div class="ss-preview-row">
+        <h4>Última foto capturada</h4>
+        <img class="ss-preview-img" src="@_photoDataUrl" alt="Captura" />
+    </div>
 
-    private bool _cameraOn = false;
-    private bool _starting = false;
-
-    private string _status = "Waiting for camera...";
-    private string? _recognizedText;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (!firstRender) return;
-
-        // Importa ES module (NO usar <script src="...">)
-        _cameraModule = await JS.InvokeAsync<IJSObjectReference>(
-            "import", "/js/Camera.js"
-        );
-
-        _dotNetRef = DotNetObjectReference.Create(new CameraPage(this));
-        _status = "JS module loaded correctly.";
-        StateHasChanged();
-    }
-
-    private async Task StartCamera()
-    {
-        if (_cameraModule is null) return;
-
-        _starting = true;
-        _status = "Starting camera...";
-        StateHasChanged();
-
-        try
-        {
-            _cameraOn = true;
-            await _cameraModule.InvokeVoidAsync("startCamera", _videoRef, _dotNetRef);
-        }
-        catch (Exception ex)
-        {
-            _cameraOn = false;
-            _status = "Error starting camera: " + ex.Message;
-        }
-        finally
-        {
-            _starting = false;
-            StateHasChanged();
-        }
-    }
-
-    private async Task StopCamera()
-    {
-        if (_cameraModule is null) return;
-
-        try
-        {
-            await _cameraModule.InvokeVoidAsync("stopCamera", _videoRef, _dotNetRef);
-        }
-        finally
-        {
-            _cameraOn = false;
-            StateHasChanged();
-        }
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        try
-        {
-            if (_cameraModule is not null)
-                await _cameraModule.DisposeAsync();
-        }
-        catch { }
-
-        _dotNetRef?.Dispose();
-    }
-
-    // Clase para callbacks JS -> .NET
-    private sealed class CameraPage
-    {
-        private readonly Camera _parent;
-        public CameraPage(Camera parent) => _parent = parent;
-
-        [JSInvokable]
-        public Task UpdateRecognizedText(string? text)
-        {
-            _parent._recognizedText = text;
-            return _parent.InvokeAsync(_parent.StateHasChanged);
-        }
-
-        [JSInvokable]
-        public Task UpdateStatus(string status)
-        {
-            _parent._status = status;
-            return _parent.InvokeAsync(_parent.StateHasChanged);
-        }
-    }
 }
+
+

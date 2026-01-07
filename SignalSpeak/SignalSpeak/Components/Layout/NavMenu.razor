@@ -1,4 +1,10 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">SignalSpeak</a>
     </div>
@@ -33,36 +39,60 @@
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
             </NavLink>
         </div>
-
-        <!-- Conditional user links -->
-        @if (string.IsNullOrEmpty(MainLayout.CurrentUserEmail))
-        {
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="/login">
-                    <span class="bi bi-box-arrow-in-right" aria-hidden="true"></span> Login
-                </NavLink>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="/register">
-                    <span class="bi bi-person-plus" aria-hidden="true"></span> Sign Up
-                </NavLink>
-            </div>
-        }
-        else
-        {
-            <div class="nav-item px-3">
-                <span class="nav-text">Welcome, @(MainLayout.CurrentUserEmail ?? "Guest")</span>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="/profile">
-                    <span class="bi bi-person-circle" aria-hidden="true"></span> Profile
-                </NavLink>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="/logout">
-                    <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Logout
-                </NavLink>
-            </div>
-        }
+<<<<<<< HEAD
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="aboutus">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> About us
+            </NavLink>
+        </div>
     </nav>
+=======
+      </nav>
+
+      <nav class="flex-column">
+
+    <!-- Dynamic Login/Register/Logout links -->
+    @if (isAuthenticated)
+    {
+        <div class="nav-item px-3">
+            <a class="nav-link" href="#" @onclick="Logout">
+                <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Logout
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/Identity/Account/Login">
+                <span class="bi bi-box-arrow-in-right" aria-hidden="true"></span> Login
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/Identity/Account/Register">
+                <span class="bi bi-person-plus" aria-hidden="true"></span> Register
+            </NavLink>
+        </div>
+    }
+</nav>
+
+>>>>>>> 164f8385dcd38f5e16c646f3f1e544a08a1ea06f
 </div>
+
+@code {
+    private bool isAuthenticated;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
+    }
+
+    private async Task Logout()
+    {
+        await SignInManager.SignOutAsync();
+        Navigation.NavigateTo("/");
+    }
+}
+
+
