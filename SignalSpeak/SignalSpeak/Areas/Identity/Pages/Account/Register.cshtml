@@ -1,0 +1,21 @@
+﻿@page
+@model RegisterModel
+
+<h2>Register</h2>
+
+<form method="post">
+    <div>
+        <input asp-for="Input.Email" placeholder="Email" />
+    </div>
+
+    <div>
+        <input asp-for="Input.Password" type="password" placeholder="Password" />
+    </div>
+
+    <button type="submit">Register</button>
+
+    <div asp-validation-summary="All"></div>
+</form>
+
+
+

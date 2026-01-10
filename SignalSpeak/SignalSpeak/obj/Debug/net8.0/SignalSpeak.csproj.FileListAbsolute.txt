@@ -894,6 +894,8 @@ C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\ob
 C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\SignalSpeak.csproj.CoreCompileInputs.cache
 C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\SignalSpeak.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\SignalSpeak.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\SignalSpeak.RazorAssemblyInfo.cache
+C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\SignalSpeak.RazorAssemblyInfo.cs
 C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\SignalSpeak.sourcelink.json
 C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
 C:\Users\corte\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
