@@ -37,7 +37,7 @@ public class RegisterModel : PageModel
         if (result.Succeeded)
         {
             await _signInManager.SignInAsync(user, isPersistent: false);
-            return Redirect("/");
+            return Redirect("/registerSuccess");
         }
 
         foreach (var error in result.Errors)
