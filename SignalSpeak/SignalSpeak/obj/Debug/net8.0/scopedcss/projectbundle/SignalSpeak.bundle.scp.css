@@ -1,4 +1,4 @@
-/* /Components/Layout/MainLayout.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/MainLayout.razor.rz.scp.css */
 .page[b-chqe5bzmo4] {
     position: relative;
     display: flex;
@@ -95,7 +95,7 @@ main[b-chqe5bzmo4] {
         right: 0.75rem;
         top: 0.5rem;
     }
-/* /Components/Layout/NavMenu.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-doc2zb67ia] {
     appearance: none;
     cursor: pointer;
@@ -201,7 +201,6 @@ main[b-chqe5bzmo4] {
         overflow-y: auto;
     }
 }
-<<<<<<< HEAD
 /* _content/SignalSpeak/Components/Pages/AboutUs.razor.rz.scp.css */
 /* Forces all images to be perfect circles and the same size */
 .team-img[b-obu22wlxhw] {
@@ -222,9 +221,6 @@ main[b-chqe5bzmo4] {
         box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
     }
 /* _content/SignalSpeak/Components/Pages/Camera.razor.rz.scp.css */
-=======
-/* /Components/Pages/Camera.razor.rz.scp.css */
->>>>>>> 164f8385dcd38f5e16c646f3f1e544a08a1ea06f
 .ss-layout[b-d2yg658lnb] {
     display: flex;
     gap: 2rem;
