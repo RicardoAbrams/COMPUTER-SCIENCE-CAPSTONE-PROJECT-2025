@@ -1,0 +1,58 @@
+# =========================
+# Python
+# =========================
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python backend
+SignalSpeak/SignalSpeak/pythonBackend/venv/
+SignalSpeak/SignalSpeak/pythonBackend/__pycache__/
+
+# =========================
+# Visual Studio / .NET
+# =========================
+.vs/
+.vscode/
+bin/
+obj/
+*.suo
+*.user
+*.rsuser
+*.userosscache
+*.sln.docstates
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+# Visual Studio cache databases
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.VC.db
+*.CodeChunks.db
+
+# Extra VS artifacts
+*.cache
+*.cache.json
+*.tlog
+*.ilk
+*.pdb
+*.exe
+*.dll
+
+# MSBuild/VS folders (por si salen con ruta completa)
+**/bin/
+**/obj/
+**/.vs/
