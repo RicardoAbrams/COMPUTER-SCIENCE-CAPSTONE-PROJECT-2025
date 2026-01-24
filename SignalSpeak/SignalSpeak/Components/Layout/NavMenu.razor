@@ -2,7 +2,7 @@
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">SignalSpeak</a>
+        <a class="navbar-brand" href="">SignSpeak</a>
     </div>
 </div>
 
@@ -40,22 +40,32 @@
         <AuthorizeView>
             <Authorized>
                 <div class="nav-item px-3">
-                    <a class="nav-link" href="/Identity/Account/Logout">
-                        <span class="bi bi-box-arrow-right"></span> Logout
+                    <NavLink class="nav-link d-flex align-items-center" href="/registerSuccess">
+                        <span class="bi bi-person-circle nav-menu-icon"></span>
+                        <span>Profile</span>
+                    </NavLink>
+                </div>
+
+                <div class="nav-item px-3">
+                    <a class="nav-link d-flex align-items-center" href="/Identity/Account/Logout">
+                        <span class="bi bi-box-arrow-right nav-menu-icon"></span>
+                        <span>Logout</span>
                     </a>
                 </div>
             </Authorized>
 
             <NotAuthorized>
                 <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="/Identity/Account/Login">
-                        <span class="bi bi-person-fill-nav-menu"></span> Login
+                    <NavLink class="nav-link d-flex align-items-center" href="Identity/Account/Login">
+                        <span class="bi bi-box-arrow-right nav-menu-icon"></span>
+                        <span>Login</span>
                     </NavLink>
                 </div>
 
                 <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="/Identity/Account/Register">
-                        <span class="bi bi-person-plus--fill-nav-menu"></span> Register
+                    <NavLink class="nav-link d-flex align-items-center" href="Identity/Account/Register">
+                        <span class="bi bi-person-plus nav-menu-icon"></span>
+                        <span>Register</span>
                     </NavLink>
                 </div>
             </NotAuthorized>

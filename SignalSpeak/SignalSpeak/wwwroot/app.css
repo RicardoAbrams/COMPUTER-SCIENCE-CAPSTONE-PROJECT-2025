@@ -49,3 +49,41 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+.nav-menu-icon {
+    display: inline-flex;
+    width: 1.25rem; 
+    justify-content: center;
+    line-height: 1; 
+    transform: translateY(-1px); 
+    margin-right: .6rem;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.85);
+}
+
+.nav-link:hover {
+        color: #fff;
+}
+
+.nav-link.active {
+        background-color: rgba(255,255,255,0.15);
+        border-radius: .375rem;
+        color: #fff;
+}
+
+.sidebar {
+    background-color: #614C7D !important;
+}
+
+.top-row {
+    background-color: #614C7D !important;
+}
+
+.nav-scrollable {
+    background-color: #614C7D !important;
+}
+
+
+

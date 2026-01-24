@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SignalSpeak")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a283b5601ea384c91ff1aedc51565a97d70e0b86")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+861c1f77b3d46d22016c3304d2600e508719fe11")]
 [assembly: System.Reflection.AssemblyProductAttribute("SignalSpeak")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SignalSpeak")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
