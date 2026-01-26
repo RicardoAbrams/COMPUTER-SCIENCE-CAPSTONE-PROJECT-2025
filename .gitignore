@@ -57,3 +57,7 @@ Thumbs.db
 **/obj/
 **/.vs/
 
+# ignore full dataset
+SignalSpeak/SignalSpeak/pythonBackend/templates_data
+SignalSpeak/SignalSpeak/pythonBackend/templates_data/
+
