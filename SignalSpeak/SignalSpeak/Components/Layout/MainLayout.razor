@@ -1,14 +1,27 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+    @* Only show sidebar if user is authenticated AND not on the landing page *@
+   @* <AuthorizeView>*@
+      @*  <Authorized>*@
+            @if (!IsLandingPage)
+            {
+                <div class="sidebar">
+                    <NavMenu />
+                </div>
+            }
+      @*  </Authorized>*@
+  @*  </AuthorizeView>*@
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+        @* Hide the top-row (About link) on the landing page for a cleaner look *@
+        @if (!IsLandingPage)
+        {
+            <div class="top-row px-4">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            </div>
+        }
 
         <article class="content px-4">
             @Body
@@ -23,5 +36,5 @@
 </div>
 
 @code {
-    public static string? CurrentUserEmail { get; set; }
+    private bool IsLandingPage => Navigation.ToBaseRelativePath(Navigation.Uri) == "";
 }

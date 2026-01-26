@@ -1,55 +1,68 @@
-﻿/*center the page*/
-.home-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+﻿h1 {
+    color: #552e88  !important;
+}
+
+.dashboard-container {
     padding: 2rem;
-    font-family: 'Segoe UI', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/*spacing*/
-h3 {
-    margin-top: 2rem;
+.action-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 15px;
 }
 
-/*logo color on header*/
-h1 {
-    color: #552e88;
-}
+    .action-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
 
-/*images for the front page (replace later with final product images)*/
-.prototype-images {
-    width: 250px;
-    margin: 1.5rem auto;
-    display: block;
-}
-
-/*number list */
-.steps-list {
-    counter-reset: step;
-    list-style: none;
-    padding: 0;
-    margin-top: 1.5rem;
-}
-
-.steps-list li {
-    display: flex;
-    align-items: center;
-    margin: 1.25rem 0;
-}
-
-/*circle numbers*/
-.steps-list li::before {
-    content: counter(step);
-    counter-increment: step;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+.icon-box {
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #552e88;
-    color: white;
-    font-weight: bold;
-    margin-right: 1rem;
+    border-radius: 12px;
+    font-size: 1.5rem;
 }
+
+.bg-primary-soft {
+    background-color: #ece4f7;
+    color: #552e88;
+}
+
+.bg-success-soft {
+    background-color: #ece4f7;
+    color: #552e88;
+}
+
+/* Custom SignalSpeak Button */
+.btn-ss {
+    background-color: #552e88 !important;
+    border-color: #552e88 !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+    .btn-ss:hover {
+        background-color: #44246d !important; /* Slightly darker purple on hover */
+        border-color: #44246d !important;
+        color: #ece4f7 !important; /* Soft lavender text on hover */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+/* Secondary/Outline Version */
+.btn-ss-outline {
+    background-color: transparent !important;
+    border: 2px solid #552e88 !important;
+    color: #552e88 !important;
+    font-weight: 600;
+}
+
+    .btn-ss-outline:hover {
+        background-color: #ece4f7 !important;
+        color: #552e88 !important;
+    }
