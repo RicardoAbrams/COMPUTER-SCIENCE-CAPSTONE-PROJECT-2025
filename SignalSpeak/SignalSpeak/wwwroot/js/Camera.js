@@ -158,12 +158,10 @@ export async function startCamera(videoElement, dotNetRef) {
                         const sign = data.recognized_sign ?? null;
 
                         // no spamear UI si no cambia
-                        if (sign !== lastRecognized) {
+                        // ✅ NO borres el UI si sign es null
+                        if (sign && sign !== lastRecognized) {
                             lastRecognized = sign;
-                            await dotNetRef.invokeMethodAsync(
-                                "UpdateRecognizedText",
-                                sign
-                            );
+                            await dotNetRef.invokeMethodAsync("UpdateRecognizedText", sign);
                         }
                     }
                 }
