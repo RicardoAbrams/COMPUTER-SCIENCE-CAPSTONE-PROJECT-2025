@@ -1,0 +1,68 @@
+﻿h1 {
+    color: #552e88  !important;
+}
+
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.action-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 15px;
+}
+
+    .action-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+}
+
+.bg-primary-soft {
+    background-color: #ece4f7;
+    color: #552e88;
+}
+
+.bg-success-soft {
+    background-color: #ece4f7;
+    color: #552e88;
+}
+
+/* Custom SignalSpeak Button */
+.btn-ss {
+    background-color: #552e88 !important;
+    border-color: #552e88 !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+    .btn-ss:hover {
+        background-color: #44246d !important; /* Slightly darker purple on hover */
+        border-color: #44246d !important;
+        color: #ece4f7 !important; /* Soft lavender text on hover */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+/* Secondary/Outline Version */
+.btn-ss-outline {
+    background-color: transparent !important;
+    border: 2px solid #552e88 !important;
+    color: #552e88 !important;
+    font-weight: 600;
+}
+
+    .btn-ss-outline:hover {
+        background-color: #ece4f7 !important;
+        color: #552e88 !important;
+    }

@@ -1,0 +1,69 @@
+﻿/* Hero Section */
+.landing-hero {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.hero-logo {
+    width: 120px;
+    border-radius: 20%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Modernized Steps */
+.steps-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Apply the soft purple to the step cards on the landing page */
+.step-card {
+    background: #ffffff;
+    border: 1px solid #ece4f7; /* Soft purple border */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(85, 46, 136, 0.05); /* Very slight purple shadow */
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+    .step-card:hover {
+        background-color: #ece4f7; /* Fills with soft purple on hover */
+        transform: translateY(-5px);
+    }
+
+.step-num, .steps-list li::before {
+    background-color: #552e88;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* The Magic Trio for Centering */
+    display: inline-flex; /* Changed from flex or block */
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
+
+    font-weight: bold;
+    margin: 0 auto 1rem; /* Keeps it centered in the card */
+    text-align: center; /* Fallback */
+}
+
+/* Ensure the CTA buttons match your brand purple */
+.btn-primary {
+    background-color: #552e88 !important;
+    border-color: #552e88 !important;
+}
+
+.btn-outline-secondary {
+    color: #552e88 !important;
+    border-color: #552e88 !important;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #552e88 !important;
+        color: white !important;
+    }

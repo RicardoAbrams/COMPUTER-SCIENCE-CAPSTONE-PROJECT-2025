@@ -1,7 +1,88 @@
-﻿@page "/"
+﻿@page "/home"
+@using Microsoft.AspNetCore.Authorization
+@*@attribute [Authorize]*@
 
-<PageTitle>Home</PageTitle>
+<div class="dashboard-container">
+   @* <AuthorizeView> remember to uncomment when testing for real!!!*@
+        @*<Authorized>*@
+            <header class="mb-4">
+                <h1 class="display-5 fw-bold text-primary">Welcome back, User!</h1> @* @(context.User.Identity?.Name ?? "User")!</h1> *@
+                <p class="text-muted">What would you like to translate today?</p>
+            </header>
 
-<h1>Hello, world!</h1>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card action-card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column">
+                            <div class="icon-box bg-primary-soft mb-3">
+                                <i class="bi bi-camera-video-fill"></i>
+                            </div>
+                            <h3 class="card-title">Sign to English</h3>
+                            <p class="card-text text-muted">Upload an image or use your camera to translate sign language into text.</p>
+                            <a href="/sign-to-text" class="btn btn-ss-outline mt-auto">Start Capturing</a>
+                        </div>
+                    </div>
+                </div>
 
-Welcome to your new app.
+                <div class="col-md-6">
+                    <div class="card action-card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column">
+                            <div class="icon-box bg-success-soft mb-3">
+                                <i class="bi bi-chat-left-dots-fill"></i>
+                            </div>
+                            <h3 class="card-title">English to Sign</h3>
+                            <p class="card-text text-muted">Type English sentences to generate corresponding sign language visuals.</p>
+                            <a href="/text-to-sign" class="btn btn-ss-outline mt-auto">Start Generating</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Recent Activity</h5>
+                        </div>
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <div class="text-center py-5">
+                                <i class="bi bi-hourglass-split display-4 text-light"></i>
+                                <p class="mt-3 text-muted">Your translation history will appear here once you start using the app.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<div class="col-lg-4">
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card shadow-sm border-0 border-start border-4" style="border-color: #552e88 !important;">
+                <div class="card-body d-flex align-items-center justify-content-between py-2">
+                    <div>
+                        <small class="text-muted d-block">System Status</small>
+                        <span class="fw-bold" style="color: #552e88;">AI Model Online</span>
+                    </div>
+                    <div class="spinner-grow spinner-grow-sm" style="color: #552e88;" role="status"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card shadow-sm border-0 border-start border-4" style="border-color: #552e88 !important;">
+                <div class="card-body py-2">
+                    <small class="text-muted d-block">Total Translations</small>
+                    <div class="d-flex align-items-center">
+                        <h3 class="mb-0 fw-bold me-2" style="color: #552e88;">@currentCount</h3>
+                      @*  <span class="badge bg-primary-soft">+1 today</span> *@ @*uncomment later maybe*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+       @* </Authorized>*@
+  @*  </AuthorizeView>*@
+</div>
+
+@code{
+    private int currentCount = 0;
+}
