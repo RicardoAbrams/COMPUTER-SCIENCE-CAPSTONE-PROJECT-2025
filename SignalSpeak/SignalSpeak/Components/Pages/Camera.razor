@@ -1,7 +1,11 @@
 ﻿@page "/camera"
 @rendermode InteractiveServer
 @using Microsoft.JSInterop
+@using System.Net.Http.Headers
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Text.Json
 @inject IJSRuntime JS
+@inject HttpClient Http
 
 <div class="ss-layout">
 
@@ -14,12 +18,34 @@
 
         <div class="ss-chat-window">
             <div class="ss-chat-bubble system">
-                SYSTEM: @(_recognizedText is null ? "Waiting for sign detection..." : $"You signed: \"{_recognizedText}\"")
+                SYSTEM:
+                @(
+                                _recognizedText is null
+                                ? "Waiting for sign detection..."
+                                : $"You signed: \"{_recognizedText}\""
+                                )
             </div>
+
+            @if (!string.IsNullOrWhiteSpace(_geminiText))
+            {
+                <div class="ss-chat-bubble system" style="margin-top:10px;">
+                    GEMINI: "@_geminiText"
+                </div>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(_geminiError))
+            {
+                <div class="ss-chat-bubble system" style="margin-top:10px; border:1px solid #ff6b6b;">
+                    ❌ @_geminiError
+                </div>
+            }
         </div>
 
         <div class="ss-chat-input-row">
-            <input class="ss-input" placeholder="Texto traducido..." value="@(_recognizedText ?? "")" readonly />
+            <input class="ss-input"
+                   placeholder="Texto traducido..."
+                   value="@(_geminiText ?? _recognizedText ?? "")"
+                   readonly />
             <button class="ss-btn ss-btn-primary" disabled>Translate</button>
         </div>
     </section>
@@ -51,90 +77,69 @@
 <!-- Controles -->
 <div class="ss-actions-bar" style="gap:12px; flex-wrap:wrap; align-items:center;">
 
+    <!-- ✅ Activate Camera -->
     <button class="ss-btn ss-btn-primary"
             @onclick="StartCamera"
             disabled="@_starting">
         @(_starting ? "Activando cámara..." : (_cameraOn ? "Camera Active" : "Activate Camera"))
     </button>
 
+    <!-- ✅ Deactivate Camera -->
     <button class="ss-btn ss-btn-outline"
             @onclick="StopCamera"
             disabled="@(!_cameraOn)">
         Deactivate Camera
     </button>
 
-    <div style="display:flex; align-items:center; gap:10px; margin-left:10px;">
-        <label style="font-weight:600;">Mode:</label>
+    <!-- ✅ Upload video (Gemini) - mismo estilo minimalista -->
+    <label class="ss-btn ss-btn-primary"
+           style="cursor:pointer;
+                  opacity:@((_uploading || _cooldownActive) ? "0.7" : "1");
+                  pointer-events:@((_uploading || _cooldownActive) ? "none" : "auto");">
+        @(
+                _uploading
+                ? "Analyzing..."
+                : (_cooldownActive ? $"Wait {RemainingCooldownSeconds()}s" : "Upload Video (Gemini)")
+                )
 
-        <button class="ss-btn ss-btn-outline"
-                @onclick="SetAnalyzeMode"
-                disabled="@(!_cameraOn || _mode == "analyze")">
-            Analyze Live
-        </button>
-
-        <button class="ss-btn ss-btn-outline"
-                @onclick="SetCollectMode"
-                disabled="@(!_cameraOn || _mode == "collect")">
-            Collect Templates
-        </button>
-    </div>
-
-    <div style="display:flex; align-items:center; gap:10px; margin-left:10px;">
-        <label style="font-weight:600;">Label:</label>
-
-        <select class="ss-input"
-                style="width:90px;"
-                @bind="_selectedLabel"
-                @bind:after="OnLabelChanged"
-                disabled="@(!_cameraOn)">
-            @foreach (var letter in _letters)
-            {
-                <option value="@letter">@letter</option>
-            }
-        </select>
-
-        <button class="ss-btn ss-btn-primary"
-                @onclick="Record2Seconds"
-                disabled="@(!_cameraOn || _mode != "collect" || _recording)">
-            @(_recording ? "Recording..." : "Record Template (2s)")
-        </button>
-
-        <button class="ss-btn ss-btn-outline"
-                @onclick="BuildTemplates"
-                disabled="@(!_cameraOn || _building)">
-            @(_building ? "Building..." : "Build templates.json")
-        </button>
-    </div>
+        <InputFile OnChange="OnVideoSelected"
+                   accept="video/*"
+                   style="display:none" />
+    </label>
 
 </div>
 
 @code {
+    // -------- Live camera --------
     private ElementReference _videoRef;
-
     private IJSObjectReference? _cameraModule;
     private DotNetObjectReference<Camera>? _dotNetRef;
 
     private bool _cameraOn = false;
     private bool _starting = false;
-    private bool _recording = false;
-    private bool _building = false;
 
     private string? _status = "Waiting for camera...";
     private string? _recognizedText = null;
 
-    private string _mode = "analyze";     // "analyze" | "collect"
-    private string _selectedLabel = "A";  // A-Z
+    // -------- Gemini video --------
+    private bool _uploading = false;
+    private string? _geminiText = null;
+    private string? _geminiError = null;
 
-    private readonly string[] _letters =
-        Enumerable.Range('A', 26).Select(c => ((char)c).ToString()).ToArray();
+    // ✅ Para no gastar tokens: cooldown después de cada análisis
+    private bool _cooldownActive = false;
+    private DateTime _cooldownUntilUtc;
+
+    // Config
+    private const long MaxVideoBytes = 25 * 1024 * 1024; // 25MB para pruebas (sube luego si quieres)
+    private const string GeminiEndpoint = "http://localhost:8000/gemini/analyze-video";
+    private const int CooldownSeconds = 20;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender) return;
 
-        // ✅ Import ES module: wwwroot/js/camera.js
         _cameraModule = await JS.InvokeAsync<IJSObjectReference>("import", "/js/camera.js");
-
         _dotNetRef = DotNetObjectReference.Create(this);
 
         _status = "JS module loaded.";
@@ -151,16 +156,10 @@
             _status = "Starting camera...";
             StateHasChanged();
 
-            // ✅ tu JS exporta startCamera(videoEl, dotNetRef)
             await _cameraModule.InvokeVoidAsync("startCamera", _videoRef, _dotNetRef);
 
             _cameraOn = true;
             _status = "Camera active.";
-            StateHasChanged();
-
-            // set initial mode + label
-            await _cameraModule.InvokeVoidAsync("setMode", _mode);
-            await _cameraModule.InvokeVoidAsync("setLabel", _selectedLabel);
         }
         catch (Exception ex)
         {
@@ -180,7 +179,6 @@
 
         try
         {
-            // ✅ tu JS exporta stopCamera(videoEl, dotNetRef)
             await _cameraModule.InvokeVoidAsync("stopCamera", _videoRef, _dotNetRef);
             _cameraOn = false;
             _status = "Camera stopped.";
@@ -196,97 +194,118 @@
         }
     }
 
-    private async Task SetAnalyzeMode()
+    private async Task OnVideoSelected(InputFileChangeEventArgs e)
     {
-        _mode = "analyze";
-        _status = "Mode: analyze (sending frames to /analyze-frame)";
-        _recognizedText = null;
+        var file = e.File;
+        if (file is null) return;
 
-        if (_cameraModule is not null && _cameraOn)
-            await _cameraModule.InvokeVoidAsync("setMode", _mode);
-
-        StateHasChanged();
-    }
-
-    private async Task SetCollectMode()
-    {
-        _mode = "collect";
-        _status = "Mode: collect (saving samples to /collect-template?label=...)";
-        _recognizedText = null;
-
-        if (_cameraModule is not null && _cameraOn)
-            await _cameraModule.InvokeVoidAsync("setMode", _mode);
-
-        StateHasChanged();
-    }
-
-    private async Task OnLabelChanged()
-    {
-        if (_cameraModule is not null && _cameraOn)
-            await _cameraModule.InvokeVoidAsync("setLabel", _selectedLabel);
-
-        _status = $"Label selected: {_selectedLabel}";
-        StateHasChanged();
-    }
-
-    private async Task Record2Seconds()
-    {
-        if (_cameraModule is null || !_cameraOn) return;
-        if (_mode != "collect") return;
+        // ✅ cooldown para evitar gastar tokens en pruebas
+        if (_cooldownActive && DateTime.UtcNow < _cooldownUntilUtc)
+        {
+            _geminiError = $"Cooldown active. Wait {RemainingCooldownSeconds()}s.";
+            StateHasChanged();
+            return;
+        }
 
         try
         {
-            _recording = true;
-            _status = $"Recording {_selectedLabel} for 2 seconds... hold still ✋";
+            _uploading = true;
+            _geminiError = null;
+            _geminiText = null;
+
+            _status = "Uploading video to Gemini...";
             StateHasChanged();
 
-            // ✅ tu JS exporta recordForMs(ms)
-            await _cameraModule.InvokeVoidAsync("recordForMs", 2000);
+            // tamaño
+            if (file.Size > MaxVideoBytes)
+            {
+                _geminiError = $"Video too large ({file.Size / 1024 / 1024} MB). Limit: {MaxVideoBytes / 1024 / 1024} MB for testing.";
+                _status = "Upload blocked (size).";
+                return;
+            }
 
-            _status = $"Recorded samples for {_selectedLabel}. (Check pythonBackend/templates_data/{_selectedLabel})";
+            using var form = new MultipartFormDataContent();
+
+            await using var stream = file.OpenReadStream(MaxVideoBytes);
+            var fileContent = new StreamContent(stream);
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+
+            form.Add(fileContent, "file", file.Name);
+
+            using var resp = await Http.PostAsync(GeminiEndpoint, form);
+            var body = await resp.Content.ReadAsStringAsync();
+
+            if (!resp.IsSuccessStatusCode)
+            {
+                _geminiError = $"HTTP {(int)resp.StatusCode}: {body}";
+                _status = "Gemini backend error ❌";
+                return;
+            }
+
+            // ✅ Parse JSON => mostrar solo transcription (si existe)
+            _geminiText = ExtractTranscription(body) ?? body;
+            _status = "Gemini analysis completed ✅";
+
+            // ✅ activar cooldown
+            StartCooldown();
+        }
+        catch (IOException)
+        {
+            _geminiError = $"Video too large. Max allowed: {MaxVideoBytes / (1024 * 1024)} MB";
+            _status = "Upload error.";
         }
         catch (Exception ex)
         {
-            _status = $"Record error: {ex.Message}";
+            _geminiError = $"Upload error: {ex.Message}";
+            _status = "Upload error.";
         }
         finally
         {
-            _recording = false;
+            _uploading = false;
             StateHasChanged();
         }
     }
 
-    private async Task BuildTemplates()
+    private static string? ExtractTranscription(string jsonOrText)
     {
-        // Llama al backend python directamente (POST /build-templates)
         try
         {
-            _building = true;
-            _status = "Building templates.json ...";
-            StateHasChanged();
-
-            using var http = new HttpClient();
-            using var resp = await http.PostAsync("http://localhost:8000/build-templates", content: null);
-
-            if (resp.IsSuccessStatusCode)
+            using var doc = JsonDocument.Parse(jsonOrText);
+            if (doc.RootElement.ValueKind == JsonValueKind.Object
+                && doc.RootElement.TryGetProperty("transcription", out var t))
             {
-                var text = await resp.Content.ReadAsStringAsync();
-                _status = $"templates.json generated ✅  {text}";
-            }
-            else
-            {
-                _status = $"Failed to build templates.json ❌  HTTP {(int)resp.StatusCode}";
+                return t.GetString();
             }
         }
-        catch (Exception ex)
+        catch { /* no-op */ }
+
+        return null;
+    }
+
+    private void StartCooldown()
+    {
+        _cooldownActive = true;
+        _cooldownUntilUtc = DateTime.UtcNow.AddSeconds(CooldownSeconds);
+
+        _ = Task.Run(async () =>
         {
-            _status = $"Build templates error: {ex.Message}";
-        }
-        finally
-        {
-            _building = false;
-            StateHasChanged();
-        }
+            // refrescar UI mientras baja el contador (cada 1s)
+            while (DateTime.UtcNow < _cooldownUntilUtc)
+            {
+                await Task.Delay(1000);
+                await InvokeAsync(StateHasChanged);
+            }
+
+            _cooldownActive = false;
+            await InvokeAsync(StateHasChanged);
+        });
+    }
+
+    private int RemainingCooldownSeconds()
+    {
+        if (!_cooldownActive) return 0;
+        var remain = (int)Math.Ceiling((_cooldownUntilUtc - DateTime.UtcNow).TotalSeconds);
+        return Math.Max(0, remain);
     }
 
     // JS -> C#
@@ -297,7 +316,6 @@
         return InvokeAsync(StateHasChanged);
     }
 
-    // JS -> C#
     [JSInvokable]
     public Task UpdateStatus(string text)
     {

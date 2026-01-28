@@ -2,6 +2,9 @@
 from fastapi import FastAPI, UploadFile, File, Query
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from gemini_router import router as gemini_router
+
+
 
 import os
 import threading
@@ -20,6 +23,7 @@ import uvicorn
 HOST = "127.0.0.1"
 PORT = 8000
 
+
 BASE_DIR = os.path.dirname(__file__)
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates_data")
 
@@ -34,7 +38,7 @@ COLLECT_MIN_INTERVAL_SEC = 0.12
 
 # Para performance: cuántos .npy máximo por label para centroid (0/None = todos)
 # Recomendado: 1500-3000 para centroid (suficiente y rápido)
-MAX_FILES_PER_LABEL_FOR_CENTROID = 500
+MAX_FILES_PER_LABEL_FOR_CENTROID = 100
 
 # =========================
 # APP
@@ -49,6 +53,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(gemini_router)
 # =========================
 # MEDIAPIPE
 # =========================
