@@ -57,18 +57,3 @@ Thumbs.db
 **/obj/
 **/.vs/
 
-# Visual Studio
-.vs/
-
-# Build outputs
-**/bin/
-**/obj/
-
-# Rider/VS Code 
-.idea/
-.vscode/
-
-# ASP.NET Core
-*.user
-*.suo
-SignalSpeak/SignalSpeak/pythonBackend/templates_data/

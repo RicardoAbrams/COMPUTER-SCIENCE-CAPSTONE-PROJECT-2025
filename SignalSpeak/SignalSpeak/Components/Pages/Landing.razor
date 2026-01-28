@@ -1,0 +1,59 @@
+﻿@page "/"
+
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider 
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            Navigation.NavigateTo("home");
+        }
+    }
+}
+
+<PageTitle>SignSpeak</PageTitle>
+
+<div class="landing-hero">
+    <img src="images/SignSpeak-logo.jpeg" class="hero-logo" alt="SignSpeak logo" />
+    <h1 class="display-4 fw-bold">Breaking Barriers with Every Gesture</h1>
+    <p class="lead">Real time American Sign Language translation powered by AI.</p>
+    
+    <div class="cta-buttons mt-4">
+        <a href="Account/Register" class="btn btn-primary btn-lg px-4 me-md-2">Get Started</a>
+        <a href="Account/Login" class="btn btn-outline-secondary btn-lg px-4">Log In</a>
+    </div>
+</div>
+
+<hr class="my-5" />
+
+<div class="landing-container">
+    <section class="info-section">
+        <h3>What is SignSpeak?</h3>
+        <p class="text-muted">SignSpeak is a web-based application capable of translating American Sign Language (ASL) 
+        gestures captured via video or image into text, and English text into ASL, using computer vision and machine learning for 
+        translations to happen in real time.</p>
+    </section>
+
+    <section class="how-it-works mt-5">
+        <h3>Quick Setup</h3>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <p>Sign up or Log in</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <p>Open the Camera</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <p>Start Signing</p>
+            </div>
+        </div>
+    </section>
+</div>
