@@ -56,3 +56,4 @@ Thumbs.db
 **/bin/
 **/obj/
 **/.vs/
+SignalSpeak/SignalSpeak/pythonBackend/templates_data/
