@@ -1,0 +1,36 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SignalSpeak</title>
+
+    <link rel="stylesheet" href="~/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/app.css" />
+    <link rel="stylesheet" href="~/SignalSpeak.styles.css" />
+
+    <nav class="navbar navbar-expand navbar-dark top-row px-4">
+        <a class="navbar-brand" href="/">SignSpeak</a>
+
+    </nav>
+
+</head>
+
+@{
+        var path = Context.Request.Path.Value ?? "";
+        var identityPageClass =
+                path.Contains("/Identity/Account/Logout", StringComparison.OrdinalIgnoreCase)
+                        ? "identity-logout"
+                        : "identity-normal";
+}
+
+
+<body class="identity-page @identityPageClass">
+    <div class="container py-4">
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -24,6 +24,14 @@ h1:focus {
     outline: none;
 }
 
+.special-color {
+    color: white;
+}
+
+.special-color2 {
+    color: black;
+}
+
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -77,6 +85,7 @@ h1:focus {
     background-color: #614C7D !important;
 }
 
+
 .top-row {
     background-color: #614C7D !important;
 }
@@ -84,6 +93,64 @@ h1:focus {
 .nav-scrollable {
     background-color: #614C7D !important;
 }
+.identity-page {
+    background: linear-gradient(180deg, #6b5b86 0%, #3b1a4f 100%);
+    min-height: 100vh;
+}
+/*Here is the purple background in Identity*/
+.identity-page {
+    background: white;
+    min-height: 100vh;
+}
+
+.identity-page .container {
+    background: transparent;
+}
+
+    .identity-page .text-dark,
+    .identity-page h1,
+    .identity-page .h1 {
+        color: #fff !important;
+    }
+
+.top-row {
+    background-color: #614C7D !important;
+}
+
+/* Identity Logout page: force text black */
+.identity-page.identity-logout,
+.identity-page.identity-logout h1,
+.identity-page.identity-logout h2,
+.identity-page.identity-logout p,
+.identity-page.identity-logout label,
+.identity-page.identity-logout a {
+    /*color: #000 !important;*/
+}
+
+/* Identity/Blazor top bar: keep text white on purple */
+.top-row,
+.top-row a,
+.top-row .navbar-brand,
+.top-row .nav-link,
+.top-row button {
+    color: #fff !important;
+}
+
+    .top-row .btn.btn-link {
+        color: #fff !important;
+        text-decoration: none;
+    }
+
+        .top-row .btn.btn-link:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+
+
+
 
 
 
