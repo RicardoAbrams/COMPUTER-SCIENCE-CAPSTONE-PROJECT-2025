@@ -49,3 +49,134 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+
+/* ===============================
+   AUTH LAYOUT (LOGIN / REGISTER)
+   =============================== */
+
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background: #f8f7fc;
+}
+
+/* ===== Left brand panel ===== */
+.auth-brand {
+    flex: 1;
+    background: linear-gradient( 160deg, #4b2aad, #6f42c1, #8b5cf6 );
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.auth-brand-content {
+    text-align: center;
+    max-width: 360px;
+}
+
+.auth-logo {
+    width: 110px;
+    margin-bottom: 1.5rem;
+}
+
+.auth-brand h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.auth-brand p {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* ===== Right form panel ===== */
+.auth-form {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.auth-form-card {
+    width: 100%;
+    max-width: 420px;
+}
+
+    /* ===== Form styling ===== */
+    .auth-form-card h3 {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+
+.auth-subtitle {
+    color: #6c757d;
+    margin-bottom: 1.75rem;
+}
+
+/* Inputs */
+.auth-form-card input {
+    border-radius: 10px;
+    padding: 0.75rem;
+}
+
+/* Primary button */
+.auth-primary-btn {
+    width: 100%;
+    border-radius: 999px;
+    padding: 0.85rem;
+    font-weight: 600;
+    background: #6f42c1;
+    border: none;
+}
+
+    .auth-primary-btn:hover {
+        background: #5a35a5;
+    }
+
+/* Footer links */
+.auth-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+    .auth-footer a {
+        color: #6f42c1;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .auth-brand {
+        display: none;
+    }
+
+    .auth-form {
+        flex: 1;
+    }
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+

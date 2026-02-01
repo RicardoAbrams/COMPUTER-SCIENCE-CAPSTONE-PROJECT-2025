@@ -1,0 +1,133 @@
+﻿@page "/Account/Login"
+@layout AuthLayout
+@rendermode InteractiveServer
+
+@using System.ComponentModel.DataAnnotations
+@using System.Net
+@using System.Net.Http.Json
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<PageTitle>Login</PageTitle>
+
+<div class="ss-login">
+    <div class="ss-login__card">
+
+        <!-- LEFT PANEL -->
+        <section class="ss-login__left">
+            <div class="ss-login__brand">
+                <div class="ss-login__logoWrap">
+                    <img src="image/SignSpeak-logo.jpeg" alt="SignSpeak Logo" class="ss-login__logo" />
+                </div>
+
+                <h1 class="ss-login__app">SIGNSPEAK</h1>
+                <p class="ss-login__subtitle">Sign to Text Translator</p>
+
+                <p class="ss-login__desc">
+                    Breaking communication barriers through sign language AI.
+                </p>
+            </div>
+
+            <!-- zig separator -->
+            <div class="ss-login__zig" aria-hidden="true"></div>
+        </section>
+
+        <!-- RIGHT PANEL -->
+        <section class="ss-login__right">
+            <div class="ss-login__formWrap">
+                <h2 class="ss-login__title">SIGN IN TO YOUR ACCOUNT</h2>
+
+                <EditForm Model="@model" OnValidSubmit="HandleLogin" FormName="loginForm">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="ss-field" ss-field--icon>
+                        <label class="ss-label">Email</label>
+                        <i class="fi fi-sr-envelope ss-icon"></i>
+                        <InputText class="ss-input" @bind-Value="model.Email" placeholder="Email" />
+                    </div>
+
+                    <div class="ss-field">
+                        <label class="ss-label">Password</label>
+                        <i class="fi fi-sr-key"></i>
+                        <InputText class="ss-input" type="password" @bind-Value="model.Password" placeholder="Password" />
+                    </div>
+
+                    <div class="ss-row">
+                        <label class="ss-check">
+                            <InputCheckbox class="ss-check__box" @bind-Value="model.RememberMe" />
+                            <span>Remember me</span>
+                        </label>
+
+                        <a class="ss-link" href="/Account/ForgotPassword">Forgot Password?</a>
+                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(error))
+                    {
+                        <div class="ss-error">@error</div>
+                    }
+
+                    <button class="ss-btn" type="submit" disabled="@isBusy">
+                        @(isBusy ? "Signing in..." : "Log In")
+                    </button>
+
+                    <div class="ss-footer">
+                        Don’t have an account? <a class="ss-link" href="/Account/Register">Create one</a>
+                    </div>
+                </EditForm>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+@code {
+    private LoginModel model = new();
+    private string? error;
+    private bool isBusy;
+
+    private async Task HandleLogin()
+    {
+        error = null;
+        isBusy = true;
+
+        try
+        {
+            var resp = await Http.PostAsJsonAsync("/auth/login", new
+            {
+                Email = model.Email,
+                Password = model.Password,
+                RememberMe = model.RememberMe
+            });
+
+            if (resp.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                error = "Invalid email or password.";
+                return;
+            }
+
+            resp.EnsureSuccessStatusCode();
+            Navigation.NavigateTo("/home", forceLoad: true);
+        }
+        catch (Exception ex)
+        {
+            error = ex.GetType().Name + ": " + ex.Message;
+        }
+        finally
+        {
+            isBusy = false;
+        }
+    }
+
+    private class LoginModel
+    {
+        [Required, EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required]
+        public string Password { get; set; } = "";
+
+        public bool RememberMe { get; set; } = true;
+    }
+}

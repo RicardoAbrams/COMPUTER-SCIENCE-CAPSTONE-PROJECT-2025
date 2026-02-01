@@ -1,4 +1,5 @@
-﻿/* Hero Section */
+﻿
+/* Hero Section */
 .landing-hero {
     background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
     padding: 4rem 1rem;
@@ -6,7 +7,7 @@
 }
 
 .hero-logo {
-    width: 120px;
+    width: 320px;
     border-radius: 20%;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);

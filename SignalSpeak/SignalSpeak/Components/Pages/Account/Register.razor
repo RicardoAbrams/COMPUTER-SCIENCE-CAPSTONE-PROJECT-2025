@@ -1,0 +1,136 @@
+﻿@page "/Account/Register"
+@layout AuthLayout
+@rendermode InteractiveServer
+
+@using System.ComponentModel.DataAnnotations
+@using System.Net
+@using System.Net.Http.Json
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<PageTitle>Register</PageTitle>
+
+<div class="ss-login">
+    <div class="ss-login__card">
+
+        <!-- LEFT (IDENTICO AL LOGIN) -->
+        <section class="ss-login__left">
+            <div class="ss-login__brand">
+                <div class="ss-login__logoWrap">
+                    <img src="image/SignSpeak-logo.jpeg" alt="SignSpeak Logo" class="ss-login__logo" />
+                </div>
+
+                <h1 class="ss-login__app">SIGNSPEAK</h1>
+                <p class="ss-login__subtitle">Sign to Text Translator</p>
+
+                <p class="ss-login__desc">
+                    Breaking communication barriers through sign language AI.
+                </p>
+            </div>
+
+            
+            
+        </section>
+
+        <!-- RIGHT -->
+        <section class="ss-login__right">
+            <div class="ss-login__formWrap">
+                <h2 class="ss-login__title">CREATE YOUR ACCOUNT</h2>
+
+                <EditForm Model="@model" OnValidSubmit="HandleRegister" FormName="registerForm">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="ss-field">
+                        <label class="ss-label">Email</label>
+                        <i class="fi fi-sr-envelope ss-icon"></i>
+                        <InputText class="ss-input" @bind-Value="model.Email" placeholder="Email" />
+                    </div>
+
+                    <div class="ss-field">
+                        <label class="ss-label">Password</label>
+                        <i class="fi fi-sr-key"></i>
+                        <InputText class="ss-input" type="password" @bind-Value="model.Password" placeholder="Password" />
+                    </div>
+
+                    <div class="ss-field">
+                        <label class="ss-label">Confirm Password</label>
+                                
+                        <InputText class="ss-input" type="password" @bind-Value="model.ConfirmPassword" placeholder="Confirm Password" />
+                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(error))
+                    {
+                        <div class="ss-error">@error</div>
+                    }
+
+                    <button class="ss-btn" type="submit" disabled="@isBusy">
+                        @(isBusy ? "Creating..." : "Create Account")
+                    </button>
+
+                    <div class="ss-footer">
+                        Already have an account? <a class="ss-link" href="/Account/Login">Log in</a>
+                    </div>
+                </EditForm>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+@code {
+    private RegisterModel model = new();
+    private string? error;
+    private bool isBusy;
+
+    private async Task HandleRegister()
+    {
+        error = null;
+        isBusy = true;
+
+        try
+        {
+            if (model.Password != model.ConfirmPassword)
+            {
+                error = "Passwords do not match.";
+                return;
+            }
+
+            var resp = await Http.PostAsJsonAsync("/auth/register", new
+            {
+                Email = model.Email,
+                Password = model.Password
+            });
+
+            if (resp.StatusCode == HttpStatusCode.Conflict)
+            {
+                error = "That email is already registered.";
+                return;
+            }
+
+            resp.EnsureSuccessStatusCode();
+            Navigation.NavigateTo("/Account/Login", forceLoad: true);
+        }
+        catch (Exception ex)
+        {
+            error = ex.GetType().Name + ": " + ex.Message;
+        }
+        finally
+        {
+            isBusy = false;
+        }
+    }
+
+    private class RegisterModel
+    {
+        [Required, EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required, MinLength(6)]
+        public string Password { get; set; } = "";
+
+        [Required, MinLength(6)]
+        public string ConfirmPassword { get; set; } = "";
+    }
+}

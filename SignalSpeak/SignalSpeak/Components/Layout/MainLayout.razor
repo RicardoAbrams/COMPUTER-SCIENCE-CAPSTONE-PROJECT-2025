@@ -1,5 +1,12 @@
-﻿@inherits LayoutComponentBase
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@inject AuthenticationStateProvider AuthStateProvider
+@inject SignInManager<IdentityUser> SignInManager
 @inject NavigationManager Navigation
+
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject UserManager<IdentityUser> UserManager
 
 <div class="page">
     @* Only show sidebar if user is authenticated AND not on the landing page *@

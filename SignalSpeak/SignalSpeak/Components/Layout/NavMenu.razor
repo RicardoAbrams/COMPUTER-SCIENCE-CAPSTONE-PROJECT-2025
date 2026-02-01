@@ -1,4 +1,11 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@inject AuthenticationStateProvider AuthStateProvider
+@inject SignInManager<IdentityUser> SignInManager
+@inject NavigationManager Navigation
+
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">SignalSpeak</a>
     </div>
@@ -18,24 +25,15 @@
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="Camera">
-              <img src="icons/translate.png" class="nav-icon" />
-                                                 Translate
-</NavLink>
+                <i class="fi fi-sr-language" style="font: 25px"></i>
+                <span>Translate</span>
+              
 
-        </div>
-
-        <div class="nav-item px-3">
-
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
+
+   
         <div class="nav-item px-3">
 \
             <NavLink class="nav-link" href="aboutus">
