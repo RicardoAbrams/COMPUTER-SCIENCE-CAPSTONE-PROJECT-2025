@@ -1,8 +1,16 @@
 ﻿@page "/camera"
 @rendermode InteractiveServer
 @using Microsoft.JSInterop
+<<<<<<< HEAD
 @inject IJSRuntime JS
 @attribute [Authorize]
+=======
+@using System.Net.Http.Headers
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Text.Json
+@inject IJSRuntime JS
+@inject HttpClient Http
+>>>>>>> backend
 
 <div class="ss-layout">
 
@@ -15,16 +23,46 @@
 
         <div class="ss-chat-window">
             <div class="ss-chat-bubble system">
+<<<<<<< HEAD
                 SYSTEM: You signed: "Hello, how are you?"
             </div>
 
             <div class="ss-chat-bubble user">
                 USER: Going to the store.
+=======
+                SYSTEM:
+                @(
+                                _recognizedText is null
+                                ? "Waiting for sign detection..."
+                                : $"You signed: \"{_recognizedText}\""
+                                )
+>>>>>>> backend
             </div>
+
+            @if (!string.IsNullOrWhiteSpace(_geminiText))
+            {
+                <div class="ss-chat-bubble system" style="margin-top:10px;">
+                    GEMINI: "@_geminiText"
+                </div>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(_geminiError))
+            {
+                <div class="ss-chat-bubble system" style="margin-top:10px; border:1px solid #ff6b6b;">
+                    ❌ @_geminiError
+                </div>
+            }
         </div>
 
         <div class="ss-chat-input-row">
+<<<<<<< HEAD
             <input class="ss-input" placeholder="Texto traducido..." disabled />
+=======
+            <input class="ss-input"
+                   placeholder="Texto traducido..."
+                   value="@(_geminiText ?? _recognizedText ?? "")"
+                   readonly />
+>>>>>>> backend
             <button class="ss-btn ss-btn-primary" disabled>Translate</button>
         </div>
     </section>
@@ -53,6 +91,7 @@
 
 </div>
 
+<<<<<<< HEAD
 <!-- Botones -->
 <div class="ss-actions-bar">
     <button class="ss-btn ss-btn-primary"
@@ -61,11 +100,41 @@
         @(_starting ? "Activando cámara..." : "Activate Camera")
     </button>
 
+=======
+<!-- Controles -->
+<div class="ss-actions-bar" style="gap:12px; flex-wrap:wrap; align-items:center;">
+
+    <!-- ✅ Activate Camera -->
+    <button class="ss-btn ss-btn-primary"
+            @onclick="StartCamera"
+            disabled="@_starting">
+        @(_starting ? "Activando cámara..." : (_cameraOn ? "Camera Active" : "Activate Camera"))
+    </button>
+
+    <!-- ✅ Deactivate Camera -->
+>>>>>>> backend
     <button class="ss-btn ss-btn-outline"
             @onclick="StopCamera"
             disabled="@(!_cameraOn)">
         Deactivate Camera
     </button>
+
+    <!-- ✅ Upload video (Gemini) - mismo estilo minimalista -->
+    <label class="ss-btn ss-btn-primary"
+           style="cursor:pointer;
+                  opacity:@((_uploading || _cooldownActive) ? "0.7" : "1");
+                  pointer-events:@((_uploading || _cooldownActive) ? "none" : "auto");">
+        @(
+                _uploading
+                ? "Analyzing..."
+                : (_cooldownActive ? $"Wait {RemainingCooldownSeconds()}s" : "Upload Video (Gemini)")
+                )
+
+        <InputFile OnChange="OnVideoSelected"
+                   accept="video/*"
+                   style="display:none" />
+    </label>
+
 </div>
 
 @if (!string.IsNullOrWhiteSpace(_photoDataUrl))
@@ -78,7 +147,9 @@
 }
 <!-- TEMP CODE DELETE LATER -->
 @code {
+    // -------- Live camera --------
     private ElementReference _videoRef;
+<<<<<<< HEAD
     private string? _status;
     private bool _starting = false;
     private bool _cameraOn = false;
@@ -100,6 +171,61 @@
         catch (Exception ex)
         {
             _status = $"Error: {ex.Message}";
+=======
+    private IJSObjectReference? _cameraModule;
+    private DotNetObjectReference<Camera>? _dotNetRef;
+
+    private bool _cameraOn = false;
+    private bool _starting = false;
+
+    private string? _status = "Waiting for camera...";
+    private string? _recognizedText = null;
+
+    // -------- Gemini video --------
+    private bool _uploading = false;
+    private string? _geminiText = null;
+    private string? _geminiError = null;
+
+    // ✅ Para no gastar tokens: cooldown después de cada análisis
+    private bool _cooldownActive = false;
+    private DateTime _cooldownUntilUtc;
+
+    // Config
+    private const long MaxVideoBytes = 25 * 1024 * 1024; // 25MB para pruebas (sube luego si quieres)
+    private const string GeminiEndpoint = "http://localhost:8000/gemini/analyze-video";
+    private const int CooldownSeconds = 20;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+
+        _cameraModule = await JS.InvokeAsync<IJSObjectReference>("import", "/js/camera.js");
+        _dotNetRef = DotNetObjectReference.Create(this);
+
+        _status = "JS module loaded.";
+        StateHasChanged();
+    }
+
+    private async Task StartCamera()
+    {
+        if (_cameraModule is null) return;
+
+        try
+        {
+            _starting = true;
+            _status = "Starting camera...";
+            StateHasChanged();
+
+            await _cameraModule.InvokeVoidAsync("startCamera", _videoRef, _dotNetRef);
+
+            _cameraOn = true;
+            _status = "Camera active.";
+        }
+        catch (Exception ex)
+        {
+            _cameraOn = false;
+            _status = $"Error starting camera: {ex.Message}";
+>>>>>>> backend
         }
         finally 
         {
@@ -109,8 +235,166 @@
 
     private async Task StopCamera()
     {
+<<<<<<< HEAD
         await JS.InvokeVoidAsync("stopVideo", _videoRef);
         _cameraOn = false;
         _status = "Camera stopped.";
     }
 }
+=======
+        if (_cameraModule is null) return;
+
+        try
+        {
+            await _cameraModule.InvokeVoidAsync("stopCamera", _videoRef, _dotNetRef);
+            _cameraOn = false;
+            _status = "Camera stopped.";
+            _recognizedText = null;
+        }
+        catch (Exception ex)
+        {
+            _status = $"Error stopping camera: {ex.Message}";
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task OnVideoSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file is null) return;
+
+        // ✅ cooldown para evitar gastar tokens en pruebas
+        if (_cooldownActive && DateTime.UtcNow < _cooldownUntilUtc)
+        {
+            _geminiError = $"Cooldown active. Wait {RemainingCooldownSeconds()}s.";
+            StateHasChanged();
+            return;
+        }
+
+        try
+        {
+            _uploading = true;
+            _geminiError = null;
+            _geminiText = null;
+
+            _status = "Uploading video to Gemini...";
+            StateHasChanged();
+
+            // tamaño
+            if (file.Size > MaxVideoBytes)
+            {
+                _geminiError = $"Video too large ({file.Size / 1024 / 1024} MB). Limit: {MaxVideoBytes / 1024 / 1024} MB for testing.";
+                _status = "Upload blocked (size).";
+                return;
+            }
+
+            using var form = new MultipartFormDataContent();
+
+            await using var stream = file.OpenReadStream(MaxVideoBytes);
+            var fileContent = new StreamContent(stream);
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+
+            form.Add(fileContent, "file", file.Name);
+
+            using var resp = await Http.PostAsync(GeminiEndpoint, form);
+            var body = await resp.Content.ReadAsStringAsync();
+
+            if (!resp.IsSuccessStatusCode)
+            {
+                _geminiError = $"HTTP {(int)resp.StatusCode}: {body}";
+                _status = "Gemini backend error ❌";
+                return;
+            }
+
+            // ✅ Parse JSON => mostrar solo transcription (si existe)
+            _geminiText = ExtractTranscription(body) ?? body;
+            _status = "Gemini analysis completed ✅";
+
+            // ✅ activar cooldown
+            StartCooldown();
+        }
+        catch (IOException)
+        {
+            _geminiError = $"Video too large. Max allowed: {MaxVideoBytes / (1024 * 1024)} MB";
+            _status = "Upload error.";
+        }
+        catch (Exception ex)
+        {
+            _geminiError = $"Upload error: {ex.Message}";
+            _status = "Upload error.";
+        }
+        finally
+        {
+            _uploading = false;
+            StateHasChanged();
+        }
+    }
+
+    private static string? ExtractTranscription(string jsonOrText)
+    {
+        try
+        {
+            using var doc = JsonDocument.Parse(jsonOrText);
+            if (doc.RootElement.ValueKind == JsonValueKind.Object
+                && doc.RootElement.TryGetProperty("transcription", out var t))
+            {
+                return t.GetString();
+            }
+        }
+        catch { /* no-op */ }
+
+        return null;
+    }
+
+    private void StartCooldown()
+    {
+        _cooldownActive = true;
+        _cooldownUntilUtc = DateTime.UtcNow.AddSeconds(CooldownSeconds);
+
+        _ = Task.Run(async () =>
+        {
+            // refrescar UI mientras baja el contador (cada 1s)
+            while (DateTime.UtcNow < _cooldownUntilUtc)
+            {
+                await Task.Delay(1000);
+                await InvokeAsync(StateHasChanged);
+            }
+
+            _cooldownActive = false;
+            await InvokeAsync(StateHasChanged);
+        });
+    }
+
+    private int RemainingCooldownSeconds()
+    {
+        if (!_cooldownActive) return 0;
+        var remain = (int)Math.Ceiling((_cooldownUntilUtc - DateTime.UtcNow).TotalSeconds);
+        return Math.Max(0, remain);
+    }
+
+    // JS -> C#
+    [JSInvokable]
+    public Task UpdateRecognizedText(string? text)
+    {
+        _recognizedText = text;
+        return InvokeAsync(StateHasChanged);
+    }
+
+    [JSInvokable]
+    public Task UpdateStatus(string text)
+    {
+        _status = text;
+        return InvokeAsync(StateHasChanged);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _dotNetRef?.Dispose();
+        if (_cameraModule is not null)
+            await _cameraModule.DisposeAsync();
+    }
+}
+>>>>>>> backend
