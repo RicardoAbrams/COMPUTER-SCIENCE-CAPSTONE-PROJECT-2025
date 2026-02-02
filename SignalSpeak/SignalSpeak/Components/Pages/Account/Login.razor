@@ -37,45 +37,44 @@
         <section class="ss-login__right">
             <div class="ss-login__formWrap">
                 <h2 class="ss-login__title">SIGN IN TO YOUR ACCOUNT</h2>
+                <form method="post" action="/auth/login">
 
-                <EditForm Model="@model" OnValidSubmit="HandleLogin" FormName="loginForm">
-                    <DataAnnotationsValidator />
-                    <ValidationSummary />
-
-                    <div class="ss-field" ss-field--icon>
+                    <div class="ss-field">
                         <label class="ss-label">Email</label>
                         <i class="fi fi-sr-envelope ss-icon"></i>
-                        <InputText class="ss-input" @bind-Value="model.Email" placeholder="Email" />
+                        <input class="ss-input" name="Email" value="@model.Email" placeholder="Email" />
                     </div>
 
                     <div class="ss-field">
                         <label class="ss-label">Password</label>
                         <i class="fi fi-sr-key"></i>
-                        <InputText class="ss-input" type="password" @bind-Value="model.Password" placeholder="Password" />
+                        <input class="ss-input" type="password" name="Password" value="@model.Password" placeholder="Password" />
                     </div>
 
                     <div class="ss-row">
                         <label class="ss-check">
-                            <InputCheckbox class="ss-check__box" @bind-Value="model.RememberMe" />
+                            <input class="ss-check__box" type="checkbox" name="RememberMe" value="true" checked="@model.RememberMe" />
                             <span>Remember me</span>
                         </label>
 
                         <a class="ss-link" href="/Account/ForgotPassword">Forgot Password?</a>
                     </div>
 
-                    @if (!string.IsNullOrWhiteSpace(error))
+                    @* Mostrar error por querystring *@
+                    @if (Navigation.Uri.Contains("err=1"))
                     {
-                        <div class="ss-error">@error</div>
+                        <div class="ss-error">Invalid email or password.</div>
                     }
 
                     <button class="ss-btn" type="submit" disabled="@isBusy">
-                        @(isBusy ? "Signing in..." : "Log In")
+                        Log In
                     </button>
 
                     <div class="ss-footer">
                         Don’t have an account? <a class="ss-link" href="/Account/Register">Create one</a>
                     </div>
-                </EditForm>
+                </form>
+
             </div>
         </section>
 
