@@ -1,4 +1,4 @@
-/* /Components/Layout/AuthLayout.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/AuthLayout.razor.rz.scp.css */
 body[b-xjvttc7dok] {
 }
 .auth-page[b-xjvttc7dok] {
@@ -8,7 +8,7 @@ body[b-xjvttc7dok] {
     padding: 32px 16px;
     background: #f3f0fb;
 }
-/* /Components/Layout/MainLayout.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/MainLayout.razor.rz.scp.css */
 .page[b-chqe5bzmo4] {
     position: relative;
     display: flex;
@@ -105,7 +105,7 @@ main[b-chqe5bzmo4] {
         right: 0.75rem;
         top: 0.5rem;
     }
-/* /Components/Layout/NavMenu.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-doc2zb67ia] {
     appearance: none;
     cursor: pointer;
@@ -211,7 +211,7 @@ main[b-chqe5bzmo4] {
         overflow-y: auto;
     }
 }
-/* /Components/Pages/AboutUs.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/AboutUs.razor.rz.scp.css */
 /* Forces all images to be perfect circles and the same size */
 .team-img[b-obu22wlxhw] {
     width: 130px;
@@ -230,7 +230,7 @@ main[b-chqe5bzmo4] {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
     }
-/* /Components/Pages/Account/Login.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/Account/Login.razor.rz.scp.css */
 .ss-login[b-rpj4dzfz58] {
     width: 100%;
     display: grid;
@@ -454,7 +454,7 @@ main[b-chqe5bzmo4] {
         font-size: 44px;
     }
 }
-/* /Components/Pages/Account/Register.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/Account/Register.razor.rz.scp.css */
 .ss-login[b-4udh0tnek7] {
     width: 100%;
     display: grid;
@@ -670,7 +670,7 @@ main[b-chqe5bzmo4] {
         font-size: 44px;
     }
 }
-/* /Components/Pages/Camera.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/Camera.razor.rz.scp.css */
 .ss-layout[b-d2yg658lnb] {
     display: flex;
     gap: 2rem;
@@ -873,7 +873,7 @@ main[b-chqe5bzmo4] {
     }
 }
 
-/* /Components/Pages/Home.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/Home.razor.rz.scp.css */
 h1[b-4kw1tleeam] {
     color: #552e88  !important;
 }
@@ -942,7 +942,7 @@ h1[b-4kw1tleeam] {
         background-color: #ece4f7 !important;
         color: #552e88 !important;
     }
-/* /Components/Pages/Landing.razor.rz.scp.css */
+/* _content/SignalSpeak/Components/Pages/Landing.razor.rz.scp.css */
 
 /* Hero Section */
 .landing-hero[b-5ik0pt7y8w] {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignalSpeak.Components;
 using SignalSpeak.Data;
@@ -69,13 +70,10 @@ app.UseAuthorization();
 app.UseAntiforgery();
 
 
-// =====================================================
-// ✅ AQUÍ SE CREA LA RUTA HTTP: POST /auth/login
-// NO ES UNA CARPETA. NO ES UN ARCHIVO.
-// ES UNA "RUTA" EN TU SERVIDOR.
-// =====================================================
+
+
 app.MapPost("/auth/login", async (
-    LoginDto dto,
+    [FromForm] LoginFormDto dto,
     UserManager<IdentityUser> userManager,
     SignInManager<IdentityUser> signInManager) =>
 {
@@ -83,7 +81,7 @@ app.MapPost("/auth/login", async (
 
     var user = await userManager.FindByEmailAsync(email);
     if (user is null)
-        return Results.Unauthorized();
+        return Results.Redirect("/Account/Login?err=1");
 
     var result = await signInManager.PasswordSignInAsync(
         user.UserName!,
@@ -91,9 +89,47 @@ app.MapPost("/auth/login", async (
         dto.RememberMe,
         lockoutOnFailure: false);
 
-    return result.Succeeded ? Results.Ok() : Results.Unauthorized();
+    return result.Succeeded
+        ? Results.Redirect("/home")
+        : Results.Redirect("/Account/Login?err=1");
 })
-.DisableAntiforgery(); // evita 400 por antiforgery en dev
+.DisableAntiforgery();
+
+
+
+
+
+// evita 400 por antiforgery en dev
+// =====================================================
+// ✅ RUTA: POST /auth/register
+// =====================================================
+app.MapPost("/auth/register", async (
+    RegisterDto dto,
+    UserManager<IdentityUser> userManager) =>
+{
+    var email = (dto.Email ?? "").Trim();
+
+    if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(dto.Password))
+        return Results.BadRequest("Email and password required.");
+
+    var existing = await userManager.FindByEmailAsync(email);
+    if (existing != null)
+        return Results.Conflict("Email already registered.");
+
+    var user = new IdentityUser
+    {
+        UserName = email,
+        Email = email
+    };
+
+    var result = await userManager.CreateAsync(user, dto.Password);
+
+    if (!result.Succeeded)
+        return Results.BadRequest(result.Errors.Select(e => e.Description));
+
+    return Results.Ok();
+})
+.DisableAntiforgery(); // igual que login
 
 
 app.MapRazorComponents<App>()
@@ -102,4 +138,6 @@ app.MapRazorComponents<App>()
 app.Run();
 
 // DTO del endpoint
-public record LoginDto(string? Email, string? Password, bool RememberMe);
+
+public record RegisterDto(string? Email, string? Password);
+public record LoginFormDto(string? Email, string? Password, bool RememberMe);
