@@ -1,16 +1,11 @@
 ﻿@page "/camera"
 @rendermode InteractiveServer
 @using Microsoft.JSInterop
-<<<<<<< HEAD
-@inject IJSRuntime JS
-@attribute [Authorize]
-=======
 @using System.Net.Http.Headers
 @using Microsoft.AspNetCore.Components.Forms
 @using System.Text.Json
 @inject IJSRuntime JS
 @inject HttpClient Http
->>>>>>> backend
 
 <div class="ss-layout">
 
@@ -23,20 +18,12 @@
 
         <div class="ss-chat-window">
             <div class="ss-chat-bubble system">
-<<<<<<< HEAD
-                SYSTEM: You signed: "Hello, how are you?"
-            </div>
-
-            <div class="ss-chat-bubble user">
-                USER: Going to the store.
-=======
                 SYSTEM:
                 @(
                                 _recognizedText is null
                                 ? "Waiting for sign detection..."
                                 : $"You signed: \"{_recognizedText}\""
                                 )
->>>>>>> backend
             </div>
 
             @if (!string.IsNullOrWhiteSpace(_geminiText))
@@ -55,14 +42,10 @@
         </div>
 
         <div class="ss-chat-input-row">
-<<<<<<< HEAD
-            <input class="ss-input" placeholder="Texto traducido..." disabled />
-=======
             <input class="ss-input"
                    placeholder="Texto traducido..."
                    value="@(_geminiText ?? _recognizedText ?? "")"
                    readonly />
->>>>>>> backend
             <button class="ss-btn ss-btn-primary" disabled>Translate</button>
         </div>
     </section>
@@ -91,16 +74,6 @@
 
 </div>
 
-<<<<<<< HEAD
-<!-- Botones -->
-<div class="ss-actions-bar">
-    <button class="ss-btn ss-btn-primary"
-            @onclick="StartCamera"
-            disabled="@_starting">
-        @(_starting ? "Activando cámara..." : "Activate Camera")
-    </button>
-
-=======
 <!-- Controles -->
 <div class="ss-actions-bar" style="gap:12px; flex-wrap:wrap; align-items:center;">
 
@@ -112,7 +85,6 @@
     </button>
 
     <!-- ✅ Deactivate Camera -->
->>>>>>> backend
     <button class="ss-btn ss-btn-outline"
             @onclick="StopCamera"
             disabled="@(!_cameraOn)">
@@ -137,41 +109,9 @@
 
 </div>
 
-@if (!string.IsNullOrWhiteSpace(_photoDataUrl))
-{
-    <div class="ss-preview-row">
-        <h4>Última foto capturada</h4>
-        <img class="ss-preview-img" src="@_photoDataUrl" alt="Captura" />
-    </div>
-
-}
-<!-- TEMP CODE DELETE LATER -->
 @code {
     // -------- Live camera --------
     private ElementReference _videoRef;
-<<<<<<< HEAD
-    private string? _status;
-    private bool _starting = false;
-    private bool _cameraOn = false;
-    private string? _photoDataUrl;
-
-    private async Task StartCamera()
-    {
-        _starting = true;
-        _status = "Connecting to camera...";
-        
-        try 
-        {
-            // This calls a JavaScript function that your colleague 
-            // likely put in a .js file or index.html
-            await JS.InvokeVoidAsync("startVideo", _videoRef);
-            _cameraOn = true;
-            _status = "Camera Active - Detecting Signs...";
-        }
-        catch (Exception ex)
-        {
-            _status = $"Error: {ex.Message}";
-=======
     private IJSObjectReference? _cameraModule;
     private DotNetObjectReference<Camera>? _dotNetRef;
 
@@ -225,23 +165,16 @@
         {
             _cameraOn = false;
             _status = $"Error starting camera: {ex.Message}";
->>>>>>> backend
         }
-        finally 
+        finally
         {
             _starting = false;
+            StateHasChanged();
         }
     }
 
     private async Task StopCamera()
     {
-<<<<<<< HEAD
-        await JS.InvokeVoidAsync("stopVideo", _videoRef);
-        _cameraOn = false;
-        _status = "Camera stopped.";
-    }
-}
-=======
         if (_cameraModule is null) return;
 
         try
@@ -397,4 +330,3 @@
             await _cameraModule.DisposeAsync();
     }
 }
->>>>>>> backend

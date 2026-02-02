@@ -15,6 +15,8 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
 build_property.RootNamespace = SignalSpeak
 build_property.RootNamespace = SignalSpeak
 build_property.ProjectDir = C:\Users\vipap\Documents\GitHub\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\SignalSpeak\SignalSpeak\
@@ -32,24 +34,12 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Account/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XExvZ291dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Routes.razor]
@@ -60,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Layout/AuthLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQXV0aExheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-xjvttc7dok
+
 [C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-chqe5bzmo4
@@ -68,6 +62,18 @@ build_metadata.AdditionalFiles.CssScope = b-chqe5bzmo4
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-doc2zb67ia
 
+[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/AboutUs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dFVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-obu22wlxhw
+
+[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Account/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XExvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-rpj4dzfz58
+
+[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Account/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFJlZ2lzdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-4udh0tnek7
+
 [C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Camera.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDYW1lcmEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-d2yg658lnb
@@ -75,3 +81,7 @@ build_metadata.AdditionalFiles.CssScope = b-d2yg658lnb
 [C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-4kw1tleeam
+
+[C:/Users/vipap/Documents/GitHub/COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025/SignalSpeak/SignalSpeak/Components/Pages/Landing.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYW5kaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-5ik0pt7y8w
