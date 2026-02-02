@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignalSpeak.Components;
 using SignalSpeak.Data;
@@ -69,13 +70,10 @@ app.UseAuthorization();
 app.UseAntiforgery();
 
 
-// =====================================================
-// ✅ AQUÍ SE CREA LA RUTA HTTP: POST /auth/login
-// NO ES UNA CARPETA. NO ES UN ARCHIVO.
-// ES UNA "RUTA" EN TU SERVIDOR.
-// =====================================================
+
+
 app.MapPost("/auth/login", async (
-    LoginDto dto,
+    [FromForm] LoginFormDto dto,
     UserManager<IdentityUser> userManager,
     SignInManager<IdentityUser> signInManager) =>
 {
@@ -83,7 +81,7 @@ app.MapPost("/auth/login", async (
 
     var user = await userManager.FindByEmailAsync(email);
     if (user is null)
-        return Results.Unauthorized();
+        return Results.Redirect("/Account/Login?err=1");
 
     var result = await signInManager.PasswordSignInAsync(
         user.UserName!,
@@ -91,9 +89,21 @@ app.MapPost("/auth/login", async (
         dto.RememberMe,
         lockoutOnFailure: false);
 
-    return result.Succeeded ? Results.Ok() : Results.Unauthorized();
+    return result.Succeeded
+        ? Results.Redirect("/home")
+        : Results.Redirect("/Account/Login?err=1");
 })
+
 .DisableAntiforgery(); // evita 400 por antiforgery en dev
+
+
+
+
+
+
+
+// evita 400 por antiforgery en dev
+
 // =====================================================
 // ✅ RUTA: POST /auth/register
 // =====================================================
@@ -132,5 +142,10 @@ app.MapRazorComponents<App>()
 app.Run();
 
 // DTO del endpoint
-public record LoginDto(string? Email, string? Password, bool RememberMe);
+
+
+
+
 public record RegisterDto(string? Email, string? Password);
+public record LoginFormDto(string? Email, string? Password, bool RememberMe);
+
