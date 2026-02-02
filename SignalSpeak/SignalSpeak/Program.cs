@@ -94,6 +94,36 @@ app.MapPost("/auth/login", async (
     return result.Succeeded ? Results.Ok() : Results.Unauthorized();
 })
 .DisableAntiforgery(); // evita 400 por antiforgery en dev
+// =====================================================
+// ✅ RUTA: POST /auth/register
+// =====================================================
+app.MapPost("/auth/register", async (
+    RegisterDto dto,
+    UserManager<IdentityUser> userManager) =>
+{
+    var email = (dto.Email ?? "").Trim();
+
+    if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(dto.Password))
+        return Results.BadRequest("Email and password required.");
+
+    var existing = await userManager.FindByEmailAsync(email);
+    if (existing != null)
+        return Results.Conflict("Email already registered.");
+
+    var user = new IdentityUser
+    {
+        UserName = email,
+        Email = email
+    };
+
+    var result = await userManager.CreateAsync(user, dto.Password);
+
+    if (!result.Succeeded)
+        return Results.BadRequest(result.Errors.Select(e => e.Description));
+
+    return Results.Ok();
+})
+.DisableAntiforgery(); // igual que login
 
 
 app.MapRazorComponents<App>()
@@ -103,3 +133,4 @@ app.Run();
 
 // DTO del endpoint
 public record LoginDto(string? Email, string? Password, bool RememberMe);
+public record RegisterDto(string? Email, string? Password);
