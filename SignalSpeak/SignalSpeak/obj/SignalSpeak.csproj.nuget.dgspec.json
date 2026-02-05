@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ricky\\SignSpeak2\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {}
+    "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ricky\\SignSpeak2\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {
+    "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ricky\\SignSpeak2\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
+        "projectUniqueName": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
         "projectName": "SignalSpeak",
-        "projectPath": "C:\\Users\\ricky\\SignSpeak2\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
-        "packagesPath": "C:\\Users\\ricky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ricky\\SignSpeak2\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\obj\\",
+        "projectPath": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
+        "packagesPath": "C:\\Users\\corte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ricky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\corte\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -106,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -52,10 +52,17 @@
                     </div>
 
                     <div class="ss-row">
+                        <input type="hidden" name="RememberMe" value="false" />
+
                         <label class="ss-check">
-                            <input class="ss-check__box" type="checkbox" name="RememberMe" value="true" checked="@model.RememberMe" />
+                            <input class="ss-check__box"
+                                   type="checkbox"
+                                   name="RememberMe"
+                                   value="true"
+                                   checked="@model.RememberMe" />
                             <span>Remember me</span>
                         </label>
+
 
                         <a class="ss-link" href="/Account/ForgotPassword">Forgot Password?</a>
                     </div>
@@ -127,6 +134,6 @@
         [Required]
         public string Password { get; set; } = "";
 
-        public bool RememberMe { get; set; } = true;
+        public bool RememberMe { get; set; } = false;
     }
 }

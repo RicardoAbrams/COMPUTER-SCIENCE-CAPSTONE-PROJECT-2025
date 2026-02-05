@@ -1,41 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\",
+  "WorkspaceRootPath": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\account\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\account\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\landing.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\landing.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\pythonbackend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\pythonbackend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\pythonbackend\\import_dataset_local.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\pythonbackend\\import_dataset_local.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\camera.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\camera.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\camera.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\erickaa\\onedrive\\documents\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\wwwroot\\js\\camera.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\landing.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\landing.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\pythonbackend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\pythonbackend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\pythonbackend\\import_dataset_local.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\pythonbackend\\import_dataset_local.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|c:\\users\\corte\\signspeakapplication\\computer-science-capstone-project-2025\\signalspeak\\signalspeak\\wwwroot\\js\\camera.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F77D3719-2ACA-4277-B82F-1E202C33F3FA}|SignalSpeak\\SignalSpeak.csproj|solutionrelative:signalspeak\\wwwroot\\js\\camera.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
@@ -46,53 +54,79 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Program.cs",
-              "RelativeDocumentMoniker": "SignalSpeak\\Program.cs",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Program.cs*",
-              "RelativeToolTip": "SignalSpeak\\Program.cs*",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAqwEsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-02T23:23:16.214Z",
+              "DocumentIndex": 1,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "SignalSpeak\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-05T22:26:10.595Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Account\\Login.razor",
+              "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Account\\Login.razor",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Account\\Login.razor",
+              "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Account\\Login.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAgwB8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-02T23:31:25.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Program.cs",
+              "RelativeDocumentMoniker": "SignalSpeak\\Program.cs",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Program.cs",
+              "RelativeToolTip": "SignalSpeak\\Program.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAqwEsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T23:23:16.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Home.razor",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Home.razor",
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Home.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-02-02T22:51:30.07Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\App.razor",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\App.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\App.razor",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\App.razor",
               "RelativeToolTip": "SignalSpeak\\Components\\App.razor",
               "ViewState": "AgIAAAIAAAAAAAAAAAAuwBMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-02T22:37:16.274Z"
+              "WhenOpened": "2026-02-02T22:37:16.274Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Landing.razor",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Landing.razor",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Landing.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Landing.razor",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Landing.razor",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Landing.razor",
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Landing.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -101,11 +135,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "requirements.txt",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\requirements.txt",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\requirements.txt",
               "RelativeDocumentMoniker": "SignalSpeak\\pythonBackend\\requirements.txt",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\requirements.txt",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\requirements.txt",
               "RelativeToolTip": "SignalSpeak\\pythonBackend\\requirements.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
@@ -113,11 +147,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "app.css",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\app.css",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\app.css",
               "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\app.css",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\app.css",
               "RelativeToolTip": "SignalSpeak\\wwwroot\\app.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -125,11 +159,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "import_dataset_local.py",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\import_dataset_local.py",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\import_dataset_local.py",
               "RelativeDocumentMoniker": "SignalSpeak\\pythonBackend\\import_dataset_local.py",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\import_dataset_local.py",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\pythonBackend\\import_dataset_local.py",
               "RelativeToolTip": "SignalSpeak\\pythonBackend\\import_dataset_local.py",
               "ViewState": "AgIAADYAAAAAAAAAAAAAAEUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
@@ -137,23 +171,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Camera.razor",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
               "RelativeDocumentMoniker": "SignalSpeak\\Components\\Pages\\Camera.razor",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\Components\\Pages\\Camera.razor",
               "RelativeToolTip": "SignalSpeak\\Components\\Pages\\Camera.razor",
               "ViewState": "AgIAANgAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T01:11:20.605Z"
+              "WhenOpened": "2025-11-18T01:11:20.605Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Camera.js",
-              "DocumentMoniker": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\js\\Camera.js",
+              "DocumentMoniker": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\js\\Camera.js",
               "RelativeDocumentMoniker": "SignalSpeak\\wwwroot\\js\\Camera.js",
-              "ToolTip": "C:\\Users\\Erickaa\\OneDrive\\documents\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\js\\Camera.js",
+              "ToolTip": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\wwwroot\\js\\Camera.js",
               "RelativeToolTip": "SignalSpeak\\wwwroot\\js\\Camera.js",
               "ViewState": "AgIAALwAAAAAAAAAAAAuwNQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
