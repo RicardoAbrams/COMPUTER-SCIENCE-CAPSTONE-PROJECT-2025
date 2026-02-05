@@ -1,11 +1,8 @@
 ﻿@page "/Account/Logout"
-@using Microsoft.AspNetCore.Identity
+@rendermode InteractiveServer
 @inject SignInManager<IdentityUser> SignInManager
 @inject NavigationManager Navigation
-
-<PageTitle>Logout</PageTitle>
-
-<p>Signing out...</p>
+@using Microsoft.AspNetCore.Identity
 
 @code {
     protected override async Task OnInitializedAsync()
