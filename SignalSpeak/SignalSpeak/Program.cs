@@ -93,13 +93,17 @@ app.MapPost("/auth/login", async (
         ? Results.Redirect("/home")
         : Results.Redirect("/Account/Login?err=1");
 })
-.DisableAntiforgery();
+
+.DisableAntiforgery(); // evita 400 por antiforgery en dev
+
+
 
 
 
 
 
 // evita 400 por antiforgery en dev
+
 // =====================================================
 // ✅ RUTA: POST /auth/register
 // =====================================================
@@ -139,5 +143,9 @@ app.Run();
 
 // DTO del endpoint
 
+
+
+
 public record RegisterDto(string? Email, string? Password);
 public record LoginFormDto(string? Email, string? Password, bool RememberMe);
+

@@ -7,7 +7,7 @@
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">SignalSpeak</a>
+        <a class="navbar-brand" href="">SignSpeak</a>
     </div>
 </div>
 
@@ -46,9 +46,16 @@
         @if (isAuthenticated)
         {
             <div class="nav-item px-3">
-                <button class="nav-link btn btn-link" @onclick="Logout">
-                    <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Logout
-                </button>
+                <NavLink class="nav-link d-flex align-items-center" href="/Account/Profile">
+                    <span class="bi bi-person-circle nav-menu-icon"></span>
+                    <span>Profile</span>
+                </NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/Account/LogoutConfirmation">
+                    <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Log out
+                </NavLink>
             </div>
         }
         else

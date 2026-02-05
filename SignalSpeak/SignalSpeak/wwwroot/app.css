@@ -179,4 +179,23 @@ h1:focus {
     line-height: 1;
 }
 
+.btn.btn-ss-outline {
+    background-color: #7B2CBF;
+    border: 2px solid #7B2CBF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+    .btn.btn-ss-outline:hover {
+        background-color: #5A189A;
+        border-color: #5A189A;
+    }
+
+
 
