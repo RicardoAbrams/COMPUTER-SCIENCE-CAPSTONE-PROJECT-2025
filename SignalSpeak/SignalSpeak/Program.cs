@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
 // ✅ HttpClient para poder hacer POST desde Blazor
 builder.Services.AddHttpClient();
 
@@ -181,4 +180,3 @@ app.MapPost("/profile/upload-photo", async (
 
 public record RegisterDto(string? Email, string? Password, string? FirstName, string? LastName);
 public record LoginFormDto(string? Email, string? Password, bool RememberMe);
-
