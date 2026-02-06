@@ -42,22 +42,48 @@
                     <DataAnnotationsValidator />
                     <ValidationSummary />
 
+                    <!-- First Name -->
+                    <div class="ss-field">
+                        <label class="ss-label">First Name</label>
+                        <InputText class="ss-input"
+                                   @bind-Value="model.FirstName"
+                                   placeholder="First name" />
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="ss-field">
+                        <label class="ss-label">Last Name</label>
+                        <InputText class="ss-input"
+                                   @bind-Value="model.LastName"
+                                   placeholder="Last name" />
+                    </div>
+
+                    <!-- Email -->
                     <div class="ss-field">
                         <label class="ss-label">Email</label>
                         <i class="fi fi-sr-envelope ss-icon"></i>
-                        <InputText class="ss-input" @bind-Value="model.Email" placeholder="Email" />
+                        <InputText class="ss-input"
+                                   @bind-Value="model.Email"
+                                   placeholder="Email" />
                     </div>
 
+                    <!-- Password -->
                     <div class="ss-field">
                         <label class="ss-label">Password</label>
                         <i class="fi fi-sr-key"></i>
-                        <InputText class="ss-input" type="password" @bind-Value="model.Password" placeholder="Password" />
+                        <InputText class="ss-input"
+                                   type="password"
+                                   @bind-Value="model.Password"
+                                   placeholder="Password" />
                     </div>
 
+                    <!-- Confirm Password -->
                     <div class="ss-field">
                         <label class="ss-label">Confirm Password</label>
-                                
-                        <InputText class="ss-input" type="password" @bind-Value="model.ConfirmPassword" placeholder="Confirm Password" />
+                        <InputText class="ss-input"
+                                   type="password"
+                                   @bind-Value="model.ConfirmPassword"
+                                   placeholder="Confirm Password" />
                     </div>
 
                     @if (!string.IsNullOrWhiteSpace(error))
@@ -100,7 +126,9 @@
             var resp = await Http.PostAsJsonAsync("/auth/register", new
             {
                 Email = model.Email,
-                Password = model.Password
+                Password = model.Password,
+                FirstName = model.FirstName,
+                LastName = model.LastName
             });
 
             if (resp.StatusCode == HttpStatusCode.Conflict)
@@ -124,6 +152,12 @@
 
     private class RegisterModel
     {
+        [Required]
+        public string FirstName { get; set; } = "";
+
+        [Required]
+        public string LastName { get; set; } = "";
+
         [Required, EmailAddress]
         public string Email { get; set; } = "";
 

@@ -31,7 +31,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite($"Data Source={dbPath}"));
 
 // Identity
-builder.Services.AddIdentityCore<IdentityUser>(options =>
+builder.Services.AddIdentityCore<ApplicationUser>(options =>
 {
     options.Password.RequiredLength = 6;
     options.Password.RequireDigit = false;
@@ -74,8 +74,8 @@ app.UseAntiforgery();
 
 app.MapPost("/auth/login", async (
     [FromForm] LoginFormDto dto,
-    UserManager<IdentityUser> userManager,
-    SignInManager<IdentityUser> signInManager) =>
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager) =>
 {
     var email = (dto.Email ?? "").Trim();
 
@@ -109,7 +109,7 @@ app.MapPost("/auth/login", async (
 // =====================================================
 app.MapPost("/auth/register", async (
     RegisterDto dto,
-    UserManager<IdentityUser> userManager) =>
+    UserManager<ApplicationUser> userManager) =>
 {
     var email = (dto.Email ?? "").Trim();
 
@@ -120,10 +120,12 @@ app.MapPost("/auth/register", async (
     if (existing != null)
         return Results.Conflict("Email already registered.");
 
-    var user = new IdentityUser
+    var user = new ApplicationUser
     {
         UserName = email,
-        Email = email
+        Email = email,
+        FirstName = (dto.FirstName ?? "").Trim(),
+        LastName = (dto.LastName ?? "").Trim()
     };
 
     var result = await userManager.CreateAsync(user, dto.Password);
@@ -133,7 +135,7 @@ app.MapPost("/auth/register", async (
 
     return Results.Ok();
 })
-.DisableAntiforgery(); // igual que login
+.DisableAntiforgery();
 
 
 app.MapRazorComponents<App>()
@@ -141,11 +143,42 @@ app.MapRazorComponents<App>()
 
 app.Run();
 
+//this is to add a photo on profile
+
+app.MapPost("/profile/upload-photo", async (
+    HttpRequest request,
+    UserManager<ApplicationUser> userManager) =>
+{
+    var user = await userManager.GetUserAsync(request.HttpContext.User);
+    if (user == null)
+        return Results.Unauthorized();
+
+    var file = request.Form.Files.FirstOrDefault();
+    if (file == null || file.Length == 0)
+        return Results.BadRequest("No file uploaded.");
+
+    var uploadsDir = Path.Combine(app.Environment.WebRootPath, "profile-images");
+    Directory.CreateDirectory(uploadsDir);
+
+    var ext = Path.GetExtension(file.FileName);
+    var fileName = $"{user.Id}{ext}";
+    var filePath = Path.Combine(uploadsDir, fileName);
+
+    using var stream = File.Create(filePath);
+    await file.CopyToAsync(stream);
+
+    user.ProfileImagePath = $"/profile-images/{fileName}";
+    await userManager.UpdateAsync(user);
+
+    return Results.Ok(user.ProfileImagePath);
+})
+.DisableAntiforgery();
+
 // DTO del endpoint
 
 
 
 
-public record RegisterDto(string? Email, string? Password);
+public record RegisterDto(string? Email, string? Password, string? FirstName, string? LastName);
 public record LoginFormDto(string? Email, string? Password, bool RememberMe);
 
