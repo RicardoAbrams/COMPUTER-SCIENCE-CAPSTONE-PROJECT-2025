@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Dennis Adorno\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "C:\\Users\\Dennis Adorno\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
         "packagesPath": "C:\\Users\\Dennis Adorno\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Dennis Adorno\\Documents\\GitHub\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\obj\\",
+=======
+    "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
+        "projectName": "SignalSpeak",
+        "projectPath": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\SignalSpeak.csproj",
+        "packagesPath": "C:\\Users\\corte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\corte\\SignSpeakApplication\\COMPUTER-SCIENCE-CAPSTONE-PROJECT-2025\\SignalSpeak\\SignalSpeak\\obj\\",
+>>>>>>> login-with-css
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\Dennis Adorno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\corte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> login-with-css
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +44,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +63,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
+<<<<<<< HEAD
         "SdkAnalysisLevel": "10.0.100"
+=======
+        "SdkAnalysisLevel": "9.0.200"
+>>>>>>> login-with-css
       },
       "frameworks": {
         "net8.0": {
@@ -106,7 +129,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+>>>>>>> login-with-css
         }
       }
     }
