@@ -1,8 +1,7 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.Authorization
-
 @inject NavigationManager Navigation
-@inject AuthenticationStateProvider AuthStateProvider
+@inject AuthenticationStateProvider AuthStateProvider 
 
 @code {
     protected override async Task OnInitializedAsync()
@@ -20,7 +19,7 @@
 <PageTitle>SignSpeak</PageTitle>
 
 <div class="landing-hero">
-    <img src="images/SignSpeak-logo.jpeg" class="hero-logo" alt="SignSpeak logo" />
+    <img src="image/SignSpeak-logo.jpeg" class="hero-logo" alt="SignSpeak logo" />
     <h1 class="display-4 fw-bold">Breaking Barriers with Every Gesture</h1>
     <p class="lead">Real time American Sign Language translation powered by AI.</p>
     

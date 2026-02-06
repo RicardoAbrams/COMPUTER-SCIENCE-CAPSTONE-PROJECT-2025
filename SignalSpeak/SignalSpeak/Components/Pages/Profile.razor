@@ -1,0 +1,112 @@
+﻿@page "/profile"
+@rendermode InteractiveServer
+
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@using SignalSpeak.Data
+
+@inject AuthenticationStateProvider AuthStateProvider
+@inject UserManager<ApplicationUser> UserManager
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<PageTitle>My Profile</PageTitle>
+
+<h3>My Profile</h3>
+
+@if (!loaded)
+{
+    <p>Loading...</p>
+}
+else if (!isAuthenticated || user is null)
+{
+    <p>You are not logged in.</p>
+}
+else
+{
+    <div class="card" style="max-width: 520px;">
+        <div class="card-body">
+
+            <!-- PROFILE IMAGE -->
+            <div style="margin-bottom:16px;">
+                @if (!string.IsNullOrWhiteSpace(user.ProfileImagePath))
+                {
+                    <img src="@user.ProfileImagePath"
+                         style="width:120px;height:120px;border-radius:50%;object-fit:cover;" />
+                }
+                else
+                {
+                    <div style="width:120px;height:120px;border-radius:50%;
+                                        background:#ccc;
+                                        display:flex;align-items:center;justify-content:center;
+                                        font-size:36px;font-weight:700;">
+                        @Initials
+                    </div>
+                }
+            </div>
+
+            <!-- UPLOAD -->
+            <InputFile OnChange="UploadPhoto" />
+
+            <hr />
+
+            <p><b>First Name:</b> @user.FirstName</p>
+            <p><b>Last Name:</b> @user.LastName</p>
+            <p><b>Email:</b> @user.Email</p>
+
+        </div>
+    </div>
+}
+
+@code {
+    private bool loaded;
+    private bool isAuthenticated;
+    private ApplicationUser? user;
+    private string Initials = "?";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var auth = await AuthStateProvider.GetAuthenticationStateAsync();
+        var principal = auth.User;
+
+        isAuthenticated = principal.Identity?.IsAuthenticated ?? false;
+
+        if (isAuthenticated)
+        {
+            user = await UserManager.GetUserAsync(principal);
+            if (user != null)
+                Initials = BuildInitials(user.FirstName, user.LastName, user.Email);
+        }
+
+        loaded = true;
+    }
+
+    private async Task UploadPhoto(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file == null) return;
+
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream(5_000_000)), "file", file.Name);
+
+        var response = await Http.PostAsync("/profile/upload-photo", content);
+        if (response.IsSuccessStatusCode)
+        {
+            var path = await response.Content.ReadAsStringAsync();
+            if (user != null)
+                user.ProfileImagePath = path;
+
+            StateHasChanged();
+        }
+    }
+
+    private static string BuildInitials(string? first, string? last, string? fallback)
+    {
+        var a = string.IsNullOrWhiteSpace(first) ? "" : first[0].ToString().ToUpper();
+        var b = string.IsNullOrWhiteSpace(last) ? "" : last[0].ToString().ToUpper();
+        var i = (a + b).Trim();
+        return string.IsNullOrWhiteSpace(i)
+            ? fallback?.Substring(0, 1).ToUpper() ?? "?"
+            : i;
+    }
+}

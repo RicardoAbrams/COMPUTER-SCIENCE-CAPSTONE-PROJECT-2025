@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <title>SignalSpeak</title>
+</head>
+<body>
+    <div id="app">Loading...</div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        window.signalSpeakFetchJson = async function (url) {
+            const res = await fetch(url, { method: "POST" });
+            return res.ok;
+        }
+    </script>
+
+</body>
+</html>
